@@ -1,0 +1,176 @@
+html {
+    font-family: 'BIZ UDPGothic';
+    color: #1B1D40;
+}
+
+header {
+    background-color: #979eb1;
+}
+
+body {
+    background-color: #fff;
+}
+
+main {
+    height: 880px;
+}
+
+footer {
+    background-color: #979eb1;
+    padding: 5px;
+}
+
+li {
+    list-style:none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.top {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.top li {
+    padding: 8px 25px;
+}
+
+.logo_top {
+    width: 100px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#searchImg {
+    position: absolute;
+    padding: 10px;
+}
+
+#search {
+    width: 700px;
+    border: 0.07rem solid #1B1D40;
+    border-radius: 10px;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+#question, #post, #login {
+    margin-top: 10px;
+}
+
+.headerbtn {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.btn {
+    color: #fff;
+    background-color: #1B1D40;
+    font-size: 15px;
+    border-radius: 10px;
+    /* border: 0.07rem solid #1B1D40; */
+    width: 100px;
+}
+
+.btn2 {
+    color: #fff;
+    background-color: #1B1D40;
+    font-size: 15px;
+    border-radius: 10px;
+    /* border: 0.07rem solid #1B1D40; */
+    width: 150px;
+}
+
+.btn:hover, .btn2:hover {
+    color: #1B1D40;
+    background-color: #fff;
+}
+
+.bottom {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.address {
+    margin: 15px;
+}
+
+.articles {
+    height: 500px;
+}
+
+.bottom li {
+    padding: 8px 25px;
+}
+
+.logo_bottom {
+    width: 300px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.left-side {
+    margin-left: 700px;
+}
+
+.mt {
+    margin-top: 16px;
+}
+
+/* postSelection */
+.selection {
+    text-align: center;
+}
+
+/* 記事投稿ページ（articles/create）の記事内容部分 */
+#editor {
+    height: 500px;
+}
+
+/* question.index */
+.q_buttons {
+    display: flex;
+}
+
+.q_wrapper {
+    display: flex;
+    border: 0.25rem bold #1B1D40;
+    
+    /* 囲み線 */
+    padding: 8px 19px;
+    margin: 2em 0;
+    color: #1B1D40;
+    background: #fff;
+    border-top: solid 5px #979eb1;
+    border-bottom: solid 5px #979eb1;
+}
+
+.q_list {
+    margin-left: 10px;
+}
+
+.q_img {
+    width: 150px;
+}
+
+.q_list_content {
+    margin-left: 25px;
+    line-height: 15px;
+}
+
+.q_list_title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.q_list_tags {
+    font-size: 15px;
+}
+
+.q_list_updated {
+    font-size: 10px;
+}
