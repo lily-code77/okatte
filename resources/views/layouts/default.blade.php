@@ -18,6 +18,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap" rel="stylesheet">
 
+    <!-- TailwindCSS -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 <body>
 
@@ -32,7 +34,16 @@
             </li>
             <li class="headerbtn" id="question"><a href="/questions"><button class="btn" type="button" name="question">質問 / 回答</button></a></li>
             <li class="headerbtn" id="post"><a href="/postSelection"><button class="btn" type="button" name="post">投稿する</button></a></li>
-            <li class="headerbtn" id="login"><a href="/login"><button class="btn" type="button" name="login">ログイン</button></a></li>
+                @if (Route::has('login'))
+                    @auth
+                    <li class="headerbtn"><a href="{{ url('/dashboard') }}" class=""><button class="btn" type="button" name="login">ダッシュボード</button></a></li>
+                    @else
+                    <li class="headerbtn"><a href="{{ route('login') }}" class=""><button class="btn" type="button" name="login">ログイン</button></a></li>
+                        @if (Route::has('register'))
+                        <li class="headerbtn"><a href="{{ route('register') }}" class=""><button class="btn" type="button" name="register">新規登録</button></a></li>
+                        @endif
+                    @endauth
+                @endif
         </ul>
     </div>
 </header>
