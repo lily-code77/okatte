@@ -7,9 +7,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/postSelection',function() {
-    return view('postSelection');
-});
+// Route::get('/login',function() {
+//     return view('welcome');
+// });
+
+// Route::get('/postSelection',function() {
+//     return view('postSelection');
+// });
 
 //認証
 Route::get('/dashboard', function () {
