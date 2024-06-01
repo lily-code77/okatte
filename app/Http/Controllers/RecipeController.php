@@ -54,7 +54,7 @@ class RecipeController extends Controller
         $recipe->tags = $request->input('tags');
         $recipe->intro = $request->input('intro');
         if ($request->hasFile('image')) {
-            $recipe->image = $request->file('image')->store('uploads');
+            $recipe->image = $request->file('image')->store('recipes', 'public');
         }
         $recipe->ing = $request->input('ing');
         $recipe->ins = $request->input('ins');

@@ -48,7 +48,7 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->tags = $request->input('tags');
         if ($request->hasFile('image')) {
-            $article->image = $request->file('image')->store('uploads');
+            $article->image = $request->file('image')->store('articles', 'public');
         }
         $article->content = $request->input('content');
         $article->status = $request->input('status'); // 'draft' もしくは 'publish'
