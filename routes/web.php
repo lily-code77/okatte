@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,5 +35,9 @@ Route::post('/questions/store', [QuestionController::class, 'store'])->name('que
 //記事
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/articles/store', [ArticleController::class, 'store'])->name('article.store');
+
+//レシピ
+Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe.create');
+Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.store');
 
 
