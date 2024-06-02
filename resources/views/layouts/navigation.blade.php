@@ -16,14 +16,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('マイページ') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('質問 / 回答') }}
+                    <x-nav-link :href="route('question.index')" :active="request()->routeIs('dashboard')">
+                            {{ __('質問 / 回答') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('記事作成') }}
+                    <x-nav-link :href="route('article.create')" :active="request()->routeIs('dashboard')">
+                            {{ __('記事作成') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('レシピ作成') }}
+                    <x-nav-link :href="route('recipe.create')" :active="request()->routeIs('dashboard')"> 
+                            {{ __('レシピ作成') }}
                     </x-nav-link>
                 </div>
             </div>
