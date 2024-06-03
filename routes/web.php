@@ -7,6 +7,7 @@ use App\Http\Controllers\RecipeController;
 use App\Models\Article;
 use App\Models\Question;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -26,7 +27,8 @@ Route::get('/postSelection',function() {
 
 //認証
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $myQuestions = Question::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
+    return view('dashboard', ['myQuestions' => $myQuestions]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class QuestionController extends Controller
@@ -14,7 +15,8 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('questions.index', ['questions' => $questions]);
+        // $myQuestions = Question::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);;
+        return view('questions.index', ['questions' => $questions]); //&& view('dashboard', ['myQuestions' => $myQuestions]);
     }
 
     /**
@@ -46,6 +48,7 @@ class QuestionController extends Controller
         }
         //以下に登録処理を記述（Eloquentモデル）
         $question = new Question();
+        $question->user_id = Auth::user()->id;
         $question->title = $request->input('title');
         $question->tags = $request->input('tags');
         if ($request->hasFile('image')) {

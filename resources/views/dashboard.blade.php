@@ -10,6 +10,24 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("質問 / 回答 一覧") }}
+                    @foreach($myQuestions as $myQuestion)
+                    <tr>
+                        <div class="q_wrapper">
+                            <td>
+                                <div class="q_list">
+                                    <img class=q_img src="{{ asset('storage/' . $myQuestion->image) }}" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="q_list_content">
+                                    <p class="q_list_title">{{ $myQuestion->title }}</p>
+                                    <p class="q_list_tags">{{ $myQuestion->tags }}</p>
+                                    <p class="q_list_updated">{{ $myQuestion->updated_at }}</p>
+                                </div>
+                            </td>
+                        </div>
+                    </tr>
+                    @endforeach
                 </div>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
