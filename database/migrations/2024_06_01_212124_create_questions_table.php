@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id'); //追加:user_id
             $table->string('title');
             $table->string('tags')->nullable();
             $table->string('image')->nullable();
