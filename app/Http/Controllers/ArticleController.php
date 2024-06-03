@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
@@ -45,6 +46,7 @@ class ArticleController extends Controller
         }
         //以下に登録処理を記述（Eloquentモデル）
         $article = new Article();
+        $article->user_id = Auth::user()->id;
         $article->title = $request->input('title');
         $article->tags = $request->input('tags');
         if ($request->hasFile('image')) {

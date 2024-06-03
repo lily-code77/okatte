@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RecipeController extends Controller
@@ -50,6 +51,7 @@ class RecipeController extends Controller
 
         //以下に登録処理を記述（Eloquentモデル）
         $recipe = new Recipe();
+        $recipe->user_id = Auth::user()->id;
         $recipe->title = $request->input('title');
         $recipe->tags = $request->input('tags');
         $recipe->intro = $request->input('intro');

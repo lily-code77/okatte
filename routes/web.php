@@ -28,7 +28,9 @@ Route::get('/postSelection',function() {
 //認証
 Route::get('/dashboard', function () {
     $myQuestions = Question::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
-    return view('dashboard', ['myQuestions' => $myQuestions]);
+    $myArticles = Article::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
+    $myRecipes = Recipe::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
+    return view('dashboard', ['myQuestions' => $myQuestions, 'myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
