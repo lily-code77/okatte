@@ -4,10 +4,20 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RecipeController;
+use App\Models\Article;
+use App\Models\Question;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/', function () {
+//     return view('index');
+// })->name('index');
+
 Route::get('/', function () {
-    return view('index');
+    $questions = Question::all();
+    $articles = Article::all();
+    $recipes = Recipe::all();
+    return view('index', ['questions' => $questions, 'articles' => $articles, 'recipes' => $recipes]);
 })->name('index');
 
 Route::get('/postSelection',function() {
