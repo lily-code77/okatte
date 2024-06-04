@@ -45,7 +45,7 @@ require __DIR__.'/auth.php';
 Route::get('/questions', [QuestionController::class, 'index'])->name('question.index');
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('question.create');
 Route::post('/questions/store', [QuestionController::class, 'store'])->name('question.store');
-Route::post('/questions/edit', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
+Route::get('/questions/{question}', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
 Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('question.destroy');
 
 //記事
