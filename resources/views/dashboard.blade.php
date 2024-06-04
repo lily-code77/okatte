@@ -26,6 +26,27 @@
                                 </div>
                             </td>
                         </div>
+                        <div>
+                            <div>
+                                <form action="{{ route('question.edit') }}" method="POST">
+                                    @csrf
+
+                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
+                                        更新
+                                    </button>
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ route('question.destroy') }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+            
+                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
+                                        削除
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </tr>
                     @endforeach
                 </div>

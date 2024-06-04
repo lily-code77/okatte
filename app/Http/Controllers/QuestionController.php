@@ -74,7 +74,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return "aaa";
     }
 
     /**
@@ -90,6 +90,6 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        return "bbb";
     }
 }
