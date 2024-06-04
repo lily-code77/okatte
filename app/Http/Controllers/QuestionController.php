@@ -96,6 +96,6 @@ class QuestionController extends Controller
         $question->delete();
         Storage::disk('public')->delete($question->image);
 
-        return to_route('dashboard')->with('success', 'ブログを削除しました');
+        return to_route('dashboard')->with('success', '質問/回答を削除しました');
     }
 }

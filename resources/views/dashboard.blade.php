@@ -70,6 +70,27 @@
                                 </div>
                             </td>
                         </div>
+                        <div>
+                            <div>
+                                <form action="{{ route('question.edit') }}" method="POST">
+                                    @csrf
+
+                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
+                                        更新
+                                    </button>
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ route('article.destroy', ['article' => $myArticle->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+            
+                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
+                                        削除
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </tr>
                     @endforeach
                 </div>
@@ -92,6 +113,27 @@
                                     <p class="q_list_updated">{{ $myRecipe->updated_at }}</p>
                                 </div>
                             </td>
+                        </div>
+                        <div>
+                            <div>
+                                <form action="{{ route('question.edit') }}" method="POST">
+                                    @csrf
+
+                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
+                                        更新
+                                    </button>
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ route('recipe.destroy', ['recipe' => $myRecipe->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+            
+                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
+                                        削除
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </tr>
                     @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
@@ -86,8 +87,12 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy(string $id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->delete();
+        Storage::disk('public')->delete($article->image);
+
+        return to_route('dashboard')->with('success', '記事を削除しました');
     }
 }
