@@ -37,7 +37,7 @@
                                 </form>
                             </div>
                             <div>
-                                <form action="{{ route('question.destroy') }}" method="POST">
+                                <form action="{{ route('question.destroy', ['question' => $myQuestion->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
             

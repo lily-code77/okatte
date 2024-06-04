@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class QuestionController extends Controller
@@ -88,8 +89,13 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Question $question)
-    {
-        return "bbb";
+    public function destroy(string $id)
+    {  
+        // dd($id);
+        $question = Question::findOrFail($id);
+        $question->delete();
+        Storage::disk('public')->delete($question->image);
+
+        return to_route('dashboard')->with('success', 'ブログを削除しました');
     }
 }
