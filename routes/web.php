@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\SearchController;
 use App\Models\Article;
 use App\Models\Question;
 use App\Models\Recipe;
@@ -60,4 +61,6 @@ Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe
 Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.store');
 Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('recipe.destroy');
 
-
+//検索
+//キーワードを受け取って検索結果を表示するルーティング
+Route::get('/search/find', [SearchController::class, 'find'])->name('search.find');
