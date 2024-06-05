@@ -45,7 +45,9 @@ require __DIR__.'/auth.php';
 Route::get('/questions', [QuestionController::class, 'index'])->name('question.index');
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('question.create');
 Route::post('/questions/store', [QuestionController::class, 'store'])->name('question.store');
-Route::get('/questions/{question}', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
+// ↓を適用させると、マイページ画面にエラーが出る。
+// Route::get('/questions/{question}', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
+Route::get('/questions/edit', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
 Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('question.destroy');
 
 //記事

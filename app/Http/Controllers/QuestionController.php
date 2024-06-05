@@ -75,7 +75,7 @@ class QuestionController extends Controller
      */
     public function edit(string $id)
     {
-        $question = Question::find($id);
+        $question = Question::findOrFail($id);
         return view('questions.edit', ['question' => $question]);
     }
 

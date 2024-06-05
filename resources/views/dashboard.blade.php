@@ -28,7 +28,7 @@
                         </div>
                         <div>
                             <div>
-                                <form action="{{ route('question.edit') }}" method="POST">
+                                <form action="{{ route('question.edit', ['question' => $myQuestion->id]) }}" method="GET">
                                     @csrf
 
                                     <button type="submit"  class="btn bg-blue-500 rounded-lg">
