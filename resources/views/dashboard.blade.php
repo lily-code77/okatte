@@ -73,15 +73,6 @@
                         </div>
                         <div>
                             <div>
-                                <form action="{{ route('question.edit') }}" method="POST">
-                                    @csrf
-
-                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
-                                        更新
-                                    </button>
-                                </form>
-                            </div>
-                            <div>
                                 <form action="{{ route('article.destroy', ['article' => $myArticle->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -116,15 +107,6 @@
                             </td>
                         </div>
                         <div>
-                            <div>
-                                <form action="{{ route('question.edit') }}" method="POST">
-                                    @csrf
-
-                                    <button type="submit"  class="btn bg-blue-500 rounded-lg">
-                                        更新
-                                    </button>
-                                </form>
-                            </div>
                             <div>
                                 <form action="{{ route('recipe.destroy', ['recipe' => $myRecipe->id]) }}" method="POST">
                                     @csrf
