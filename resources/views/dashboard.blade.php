@@ -12,6 +12,7 @@
                     {{ __("質問 / 回答 一覧") }}
                     @foreach($myQuestions as $myQuestion)
                     <tr>
+                        <p>{{ $myQuestion->id }}</p>
                         <div class="q_wrapper">
                             <td>
                                 <div class="q_list">
@@ -28,8 +29,8 @@
                         </div>
                         <div>
                             <div>
-                                <form action="{{ route('question.edit', ['question' => $myQuestion->id]) }}" method="GET">
-                                    @csrf
+                            <form action="{{ route('question.edit') , ['question' => $myQuestion->id]}}" method="GET">
+                                @csrf
 
                                     <button type="submit"  class="btn bg-blue-500 rounded-lg">
                                         更新
