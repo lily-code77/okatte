@@ -59,7 +59,7 @@ class QuestionController extends Controller
         $question->status = $request->input('status'); // 'draft' もしくは 'publish'
         $question->save();
 
-        return redirect()->route('question.index')->with('success', '記事が保存されました');
+        return redirect()->route('dashboard')->with('success', '記事が保存されました');
     }
 
     /**
@@ -115,7 +115,7 @@ class QuestionController extends Controller
         $question->status = $request->input('status'); // 'draft' もしくは 'publish'
         $question->save();
 
-        return redirect()->route('question.index')->with('success', '記事が保存されました');
+        return redirect()->route('dashboard')->with('success', '記事が保存されました');
     }
 
     /**

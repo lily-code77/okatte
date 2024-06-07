@@ -60,7 +60,7 @@
 <!-- ▲▲▲▲ページ毎の個別内容▲▲▲▲　-->
 
 <!-- ▼▼▼▼共通フッター▼▼▼▼　-->
-<footer class="">
+<!-- <footer class="">
     <div class="">
         <a class="" href="/"><img class="logo_bottom" src="{{ asset('images/index/logo.png') }}" alt="ロゴ"></a>
         <div class="address">
@@ -75,7 +75,7 @@
             <li><a href="#" class="">User Agreement</a></li>
         </ul>
     </div>
-</footer>
+</footer> -->
 <!-- ▲▲▲▲共通フッター▲▲▲▲　-->
 </body>
 </html>

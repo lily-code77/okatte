@@ -55,11 +55,16 @@ Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->
 //記事
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/articles/store', [ArticleController::class, 'store'])->name('article.store');
+Route::get('/articles/{article}', [ArticleController::class, 'edit'])->middleware(['auth', 'verified'])->name('article.edit');
+Route::put('/articles/{article}', [ArticleController::class, 'update'])->middleware(['auth', 'verified'])->name('article.update');
 Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->middleware(['auth', 'verified'])->name('article.destroy');
+
 
 //レシピ
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.store');
+Route::get('/recipes/{recipe}', [RecipeController::class, 'edit'])->middleware(['auth', 'verified'])->name('recipe.edit');
+Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware(['auth', 'verified'])->name('recipe.update');
 Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('recipe.destroy');
 
 //検索
