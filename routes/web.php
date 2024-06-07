@@ -49,6 +49,7 @@ Route::post('/questions/store', [QuestionController::class, 'store'])->name('que
 // ↓を適用させると、マイページ画面にエラーが出る。
 Route::get('/questions/{question}', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
 // Route::get('/questions/edit', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
+Route::put('/questions/{question}', [QuestionController::class, 'update'])->middleware(['auth', 'verified'])->name('question.update');
 Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('question.destroy');
 
 //記事

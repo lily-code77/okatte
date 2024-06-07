@@ -82,9 +82,40 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, string $id)
     {
-        //
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'title' => 'required | max:255',
+            'tags' => 'nullable | min:1',
+            'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
+            'content'   => 'required',
+        ]);
+
+        //バリデーション:エラー 
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $question = Question::findOrFail($id);
+
+        //画像を変更する場合
+        if ($request->hasFile('image')) {
+            // 変更前の画像を削除
+            Storage::disk('public')->delete($question->image);
+            // 変更後の画像をアップロード、保存パスを更新対象データにセット
+            $question->image = $request->file('image')->store('questions', 'public');
+        }
+        
+        $question->title = $request->input('title');
+        $question->tags = $request->input('tags');
+        $question->content = $request->input('content');
+        $question->status = $request->input('status'); // 'draft' もしくは 'publish'
+        $question->save();
+
+        return redirect()->route('question.index')->with('success', '記事が保存されました');
     }
 
     /**
