@@ -11,7 +11,24 @@
         <img src="{{ asset('storage/'. $recipe->image) }}" alt="">
         <input type="file" name="image" accept='image/*' class=""><br>
         <textarea type="text" name="ing" id="" placeholder="材料">{{ old('ing', $recipe->ing) }}</textarea><br>
-        <textarea type="text" name="ins" id="" placeholder="作り方">{{ old('ins', $recipe->ins) }}</textarea><br>
+        
+        @for($i = 1; $i < 4; $i++)
+            <div class="step">
+                <div class="">
+                    手順{{$i}}
+                    <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                    <input type="text" name="steps[]" placeholder="手順を入力" class="">
+                    <button type="button" class="">変更履歴</button>
+                    <button type="button" class="">更新</button>
+                </div>
+            </div>
+            @endfor
+
+        <!-- add button -->
+        <div>
+            <button type="button" id="step-add" class="">手順を追加する</button>
+        </div>
+
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント">{{ old('comment', $recipe->comment) }}</textarea><br>
         <textarea type="text" name="memo" id="" placeholder="メモ（一般公開はされません）">{{ old('memo', $recipe->memo) }}</textarea>
         <p class="">
