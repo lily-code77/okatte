@@ -10,6 +10,7 @@
         <input type="file" name="image" accept='image/*' class=""><br>
         <textarea type="text" name="ing" id="" placeholder="材料"></textarea><br>
         
+        <input type="text" name="version_name" placeholder="手順を更新する理由/コメント" class="">
             @for($i = 1; $i < 4; $i++)
             <div class="step">
                 <div class="">
