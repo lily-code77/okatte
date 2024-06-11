@@ -10,22 +10,24 @@
         <input type="file" name="image" accept='image/*' class=""><br>
         <textarea type="text" name="ing" id="" placeholder="材料"></textarea><br>
         
-        <input type="text" name="version_name" placeholder="手順を更新する理由/コメント" class="">
-            @for($i = 1; $i < 4; $i++)
-            <div class="step">
-                <div class="">
-                    手順{{$i}}
-                    <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
-                    <input type="text" name="steps[]" placeholder="手順を入力" class="">
-                    <button type="button" class="">変更履歴</button>
-                    <!-- <button type="button" class="">更新</button> -->
+        <div id="steps">
+            <input type="text" name="version_name" placeholder="この手順のタイトル　(Ex:First instruction)" class="">
+                @for($i = 1; $i < 4; $i++)
+                <div class="step">
+                    <div class="">
+                        手順{{$i}}
+                        <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                        <input type="text" name="steps[]" placeholder="手順を入力" class="">
+                        <a href=""><button type="button" class="">変更履歴</button></a>
+                        <!-- <button type="button" class="">更新</button> -->
+                    </div>
                 </div>
-            </div>
-            @endfor
+                @endfor
 
-        <!-- add button -->
-        <div>
-            <button type="button" id="step-add" class="">手順を追加する</button>
+            <!-- add button -->
+            <div>
+                <button type="button" id="step-add" class="">手順を追加する</button>
+            </div>
         </div>
 
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント"></textarea><br>
@@ -36,5 +38,16 @@
         </p>
     </form>
 </section>
+
+<script>
+    window.onload = function() {
+        let steps = document.getElementById('steps');
+
+        Sortable.create(steps, {
+            animation: 150,
+            // handle: '.handle',
+        });
+    };
+</script>
 
 @endsection

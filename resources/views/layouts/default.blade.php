@@ -20,6 +20,12 @@
 
     <!-- TailwindCSS -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <script src="/js/recipe/create.js"></script>
+    
 </head>
 <body>
 
