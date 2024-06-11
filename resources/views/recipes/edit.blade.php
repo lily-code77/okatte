@@ -19,7 +19,7 @@
                     <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
                     <input type="text" name="steps[]" placeholder="手順を入力" class="">
                     <button type="button" class="">変更履歴</button>
-                    <button type="button" class="">更新</button>
+                    <!-- <button type="button" class="">更新</button> -->
                 </div>
             </div>
             @endfor
@@ -35,6 +35,10 @@
             <button class="" type="submit" name="status" value="draft">下書き保存</button>
             <button class="" type="submit" name="status" value="publish">公開設定</button>
         </p>
+    </form>
+        
+    <form action="">
+        <button class="" type="submit" name="" value="">新たなレシピとして公開する</button>
     </form>
 </section>
 

@@ -17,7 +17,7 @@
                     <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
                     <input type="text" name="steps[]" placeholder="手順を入力" class="">
                     <button type="button" class="">変更履歴</button>
-                    <button type="button" class="">更新</button>
+                    <!-- <button type="button" class="">更新</button> -->
                 </div>
             </div>
             @endfor
