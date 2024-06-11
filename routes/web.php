@@ -67,6 +67,8 @@ Route::get('/recipes/{recipe}', [RecipeController::class, 'edit'])->middleware([
 Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware(['auth', 'verified'])->name('recipe.update');
 Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('recipe.destroy');
 
+Route::get('/recipes/change_history', [RecipeController::class, 'changeHistory'])->name('recipe.changeHistory');
+
 //検索
 //キーワードを受け取って検索結果を表示するルーティング
 Route::get('/search/find', [SearchController::class, 'find'])->name('search.find');

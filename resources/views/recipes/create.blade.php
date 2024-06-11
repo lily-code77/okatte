@@ -14,13 +14,11 @@
             <input type="text" name="version_name" placeholder="この手順のタイトル　(Ex:First instruction)" class="">
                 @for($i = 1; $i < 4; $i++)
                 <div class="step">
-                    <div class="">
-                        手順{{$i}}
-                        <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                        <p class="step-number">手順{{$i}}</p>
+                        <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
                         <input type="text" name="steps[]" placeholder="手順を入力" class="">
-                        <a href=""><button type="button" class="">変更履歴</button></a>
+                        <a href="{{ route('recipe.changeHistory') }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
                         <!-- <button type="button" class="">更新</button> -->
-                    </div>
                 </div>
                 @endfor
 
@@ -45,7 +43,13 @@
 
         Sortable.create(steps, {
             animation: 150,
-            // handle: '.handle',
+            handle: '.handle',
+            onEnd: function(evt) {
+                var items = steps.querySelectorAll('.step');
+                items.forEach(function(item, index) {
+                    item.querySelector('.step-number').innerHTML = '手順' + (index + 1);
+                });
+            }
         });
     };
 </script>
