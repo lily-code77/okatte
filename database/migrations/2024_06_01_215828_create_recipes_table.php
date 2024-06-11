@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('intro')->nullable();
             $table->string('image')->nullable();
             $table->string('ing');
-            $table->string('ins');
             $table->string('comment')->nullable();
             $table->string('memo')->nullable();
             $table->enum('status', ['draft', 'publish']);
