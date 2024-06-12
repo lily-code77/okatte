@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Step;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -31,6 +33,9 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        $posts = $request->all();
+        // dd($posts);
+
         //バリデーション
         $validator = Validator::make($request->all(), [
             'title' => 'required | max:255',
@@ -38,19 +43,22 @@ class RecipeController extends Controller
             'intro' => 'nullable | min:1',
             'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
             'ing' => 'required | max:255',
-            'ins' => 'required | max:255',
+            // 'ins' => 'required | max:255',
             'comment' => 'nullable | max:255',
             'memo' => 'nullable | max:255',
+            'version_name' => 'nullable | max:255',
+            'steps' => 'required | max:255',
+
         ]);
 
         //バリデーション:エラー 
         if ($validator->fails()) {
-            return redirect('/')
+            return back()
                 ->withInput()
                 ->withErrors($validator);
         }
 
-        //以下に登録処理を記述（Eloquentモデル）
+        //以下にRecipesテーブルへの登録処理を記述（Eloquentモデル）
         $recipe = new Recipe();
         $recipe->user_id = Auth::user()->id;
         $recipe->title = $request->input('title');
@@ -60,11 +68,26 @@ class RecipeController extends Controller
             $recipe->image = $request->file('image')->store('recipes', 'public');
         }
         $recipe->ing = $request->input('ing');
-        $recipe->ins = $request->input('ins');
+        // $recipe->ins = $request->input('ins');
         $recipe->comment = $request->input('comment');
         $recipe->memo = $request->input('memo');
         $recipe->status = $request->input('status'); // 'draft' もしくは 'publish'
         $recipe->save();
+
+        //以下にStepsテーブルへの登録処理を記述
+        // $steps = new Step();
+        $comment = $request->input('version_name');
+        $recipe_id = $recipe->id;
+        $steps = [];
+        foreach($posts['steps'] as $key => $step){
+            $steps[$key] = [
+                'recipe_id' => $recipe_id,
+                'version_name' => $comment,
+                'step_number' => $key + 1,
+                'description' => $step
+            ];
+        }
+        Step::insert($steps);
 
         return redirect()->route('dashboard')->with('success', '記事が保存されました');
     }
@@ -98,7 +121,7 @@ class RecipeController extends Controller
             'intro' => 'nullable | min:1',
             'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
             'ing' => 'required | max:255',
-            'ins' => 'required | max:255',
+            // 'ins' => 'required | max:255',
             'comment' => 'nullable | max:255',
             'memo' => 'nullable | max:255',
         ]);
@@ -143,5 +166,10 @@ class RecipeController extends Controller
         Storage::disk('public')->delete($recipe->image);
 
         return to_route('dashboard')->with('success', 'レシピを削除しました');
+    }
+
+    public function changeHistory()
+    {
+        return view('recipes.changeHistory');
     }
 }

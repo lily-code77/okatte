@@ -18,7 +18,6 @@
                         <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
                         <input type="text" name="steps[]" placeholder="手順を入力" class="">
                         <a href="{{ route('recipe.changeHistory') }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
-                        <!-- <button type="button" class="">更新</button> -->
                 </div>
                 @endfor
 
