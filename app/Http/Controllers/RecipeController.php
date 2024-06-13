@@ -43,7 +43,6 @@ class RecipeController extends Controller
             'intro' => 'nullable | min:1',
             'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
             'ing' => 'required | max:255',
-            // 'ins' => 'required | max:255',
             'comment' => 'nullable | max:255',
             'memo' => 'nullable | max:255',
             'version_name' => 'nullable | max:255',
@@ -68,7 +67,6 @@ class RecipeController extends Controller
             $recipe->image = $request->file('image')->store('recipes', 'public');
         }
         $recipe->ing = $request->input('ing');
-        // $recipe->ins = $request->input('ins');
         $recipe->comment = $request->input('comment');
         $recipe->memo = $request->input('memo');
         $recipe->status = $request->input('status'); // 'draft' もしくは 'publish'
@@ -118,6 +116,8 @@ class RecipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $posts = $request->all();
+        
         //バリデーション
         $validator = Validator::make($request->all(), [
             'title' => 'required | max:255',
@@ -125,7 +125,6 @@ class RecipeController extends Controller
             'intro' => 'nullable | min:1',
             'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
             'ing' => 'required | max:255',
-            // 'ins' => 'required | max:255',
             'comment' => 'nullable | max:255',
             'memo' => 'nullable | max:255',
         ]);
@@ -151,11 +150,24 @@ class RecipeController extends Controller
         $recipe->tags = $request->input('tags');
         $recipe->intro = $request->input('intro');
         $recipe->ing = $request->input('ing');
-        $recipe->ins = $request->input('ins');
         $recipe->comment = $request->input('comment');
         $recipe->memo = $request->input('memo');
         $recipe->status = $request->input('status'); // 'draft' もしくは 'publish'
         $recipe->save();
+
+        //以下にStepsテーブルへの登録処理を記述（手順は「上書き保存」ではなく「名前をつけて保存」）
+        $comment = $request->input('version_name');
+        $recipe_id = $recipe->id;
+        $steps = [];
+        foreach($posts['steps'] as $key => $step){
+            $steps[$key] = [
+                'recipe_id' => $recipe_id,
+                'version_name' => $comment,
+                'step_number' => $key + 1,
+                'description' => $step
+            ];
+        }
+        Step::insert($steps);
 
         return redirect()->route('dashboard')->with('success', '記事が保存されました');
     }

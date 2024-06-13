@@ -64,8 +64,11 @@ Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->mid
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.store');
 Route::get('/recipes/{recipe}', [RecipeController::class, 'edit'])->middleware(['auth', 'verified'])->name('recipe.edit');
+// レシピの更新は、「手順だけ」上書き保存ではなく、名前をつけて保存
 Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware(['auth', 'verified'])->name('recipe.update');
 Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('recipe.destroy');
+
+
 
 Route::get('/recipes/change_history', [RecipeController::class, 'changeHistory'])->name('recipe.changeHistory');
 
