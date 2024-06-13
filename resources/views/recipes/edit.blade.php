@@ -13,8 +13,8 @@
         <textarea type="text" name="ing" id="" placeholder="材料">{{ old('ing', $recipe['ing']) }}</textarea><br>
         
         <div id="steps">
+            <input type="text" value="{{$recipe['steps'][0]['version_name']}}" name="version_name" placeholder="手順を更新する理由/コメント" class="">
             @foreach($recipe['steps'] as $i => $os)
-            <input type="text" value="{{$os['version_name']}}" name="version_name" placeholder="手順を更新する理由/コメント" class="">
                 <div class="step">
                         <p>手順{{$os['step_number']}}</p>
                         <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
