@@ -66,6 +66,7 @@ Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.
 Route::get('/recipes/{recipe}', [RecipeController::class, 'edit'])->middleware(['auth', 'verified'])->name('recipe.edit');
 // レシピの更新は、「手順だけ」上書き保存ではなく、名前をつけて保存
 Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware(['auth', 'verified'])->name('recipe.update');
+//Recipe_idが削除されたら、そのrecipe_idに紐づくStepsテーブルのidも削除される
 Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('recipe.destroy');
 
 
