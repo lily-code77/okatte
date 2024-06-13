@@ -71,7 +71,7 @@ Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middle
 
 
 
-Route::get('/recipes/change_history', [RecipeController::class, 'changeHistory'])->middleware(['auth', 'verified'])->name('recipe.changeHistory');
+Route::get('/recipes/change_history/{recipe}', [RecipeController::class, 'changeHistory'])->middleware(['auth', 'verified'])->name('recipe.changeHistory');
 
 //検索
 //キーワードを受け取って検索結果を表示するルーティング
