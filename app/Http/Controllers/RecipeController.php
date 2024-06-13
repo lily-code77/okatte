@@ -105,8 +105,12 @@ class RecipeController extends Controller
      */
     public function edit(string $id)
     {
-        $recipe = Recipe::findOrFail($id);
-        return view('recipes.edit', ['recipe' => $recipe]);
+        $recipe = Recipe::with(['steps', 'user'])
+            ->where('recipes.id', $id)
+            ->first()->toArray();
+
+        // dd($recipe);
+        return view('recipes.edit', compact('recipe'));
     }
 
     /**
