@@ -16,18 +16,17 @@
             <input type="text" value="{{$recipe['steps'][0]['version_name']}}" name="version_name" placeholder="手順を更新する理由/コメント" class="">
             @foreach($recipe['steps'] as $i => $os)
                 <div class="step">
-                        <p>手順{{$os['step_number']}}</p>
-                        <img src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                        <p class="step-number">手順{{$os['step_number']}}</p>
+                        <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
                         <input type="text" value="{{$os['description']}}" name="steps[]" placeholder="手順を入力" class="">
-                        <button type="button" class="">変更履歴</button>
-                        <!-- <button type="button" class="">更新</button> -->
+                        <img src="{{ asset('images/index/history.svg') }}" alt="変更履歴">
+                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
                 </div>
             @endforeach
-
-            <!-- add button -->
-            <div>
-                <button type="button" id="step-add" class="">手順を追加する</button>
-            </div>
+        </div>
+        <!-- add button -->
+        <div>
+            <button type="button" id="step-add" class="">手順を追加する</button>
         </div>
 
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント">{{ old('comment', $recipe['comment']) }}</textarea><br>
@@ -49,8 +48,32 @@
 
         Sortable.create(steps, {
             animation: 150,
-            // handle: '.handle',
+            handle: '.handle',
+            onEnd: function(evt) {
+                var items = steps.querySelectorAll('.step');
+                items.forEach(function(item, index) {
+                    item.querySelector('.step-number').innerHTML = '手順' + (index + 1);
+                });
+            }
         });
     };
+
+    document.getElementById('steps').addEventListener('click', function(evt) {
+        if (evt.target.classList.contains('step-delete')) {
+            evt.target.closest('.step').remove();
+        }
+    });
+
+    document.getElementById('step-add').addEventListener('click', function() {
+        let stepCount = steps.querySelectorAll('.step').length;
+        let step = document.createElement('div');
+        step.classList.add('step');
+        step.innerHTML = `<p class="step-number">手順${stepCount + 1}</p>
+                        <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                        <input type="text" name="steps[]" placeholder="手順を入力" class="">
+                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">`;
+
+        steps.appendChild(step);
+    })
 </script>
 @endsection

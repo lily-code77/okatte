@@ -17,16 +17,15 @@
                         <p class="step-number">手順{{$i}}</p>
                         <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
                         <input type="text" name="steps[]" placeholder="手順を入力" class="">
-                        <a href="{{ route('recipe.changeHistory') }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
+                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
                 </div>
                 @endfor
 
-            <!-- add button -->
-            <div>
-                <button type="button" id="step-add" class="">手順を追加する</button>
-            </div>
         </div>
-
+        <!-- add button -->
+        <div>
+            <button type="button" id="step-add" class="">手順を追加する</button>
+        </div>
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント"></textarea><br>
         <textarea type="text" name="memo" id="" placeholder="メモ（一般公開はされません）"></textarea>
         <p class="">
@@ -51,6 +50,24 @@
             }
         });
     };
+
+    document.getElementById('steps').addEventListener('click', function(evt) {
+        if (evt.target.classList.contains('step-delete')) {
+            evt.target.closest('.step').remove();
+        }
+    });
+
+    document.getElementById('step-add').addEventListener('click', function() {
+        let stepCount = steps.querySelectorAll('.step').length;
+        let step = document.createElement('div');
+        step.classList.add('step');
+        step.innerHTML = `<p class="step-number">手順${stepCount + 1}</p>
+                        <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                        <input type="text" name="steps[]" placeholder="手順を入力" class="">
+                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">`;
+
+        steps.appendChild(step);
+    })
 </script>
 
 @endsection
