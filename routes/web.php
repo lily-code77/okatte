@@ -70,8 +70,9 @@ Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware
 Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('recipe.destroy');
 
 
-
+// 変更履歴を作成中のレシピに反映させる
 Route::get('/recipes/change_history/{recipe}', [RecipeController::class, 'changeHistory'])->middleware(['auth', 'verified'])->name('recipe.changeHistory');
+Route::post('/recipes/change_history/{step}', [RecipeController::class, 'reflectHistory'])->middleware(['auth', 'verified'])->name('recipe.reflectHistory');
 
 //検索
 //キーワードを受け取って検索結果を表示するルーティング

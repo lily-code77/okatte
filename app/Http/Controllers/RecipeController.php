@@ -196,4 +196,9 @@ class RecipeController extends Controller
         // return view('recipes.changeHistory', ['recipe' => $recipe]);
         return view('recipes.changeHistory', compact('recipe'));
     }
+
+    public function reflectHistory(string $id)
+    {
+        //備忘録：route:recipe.changeHistoryのurlに、｛step}の追記が必要かも、変数二つのURLの送信について調査が必要
+    }
 }
