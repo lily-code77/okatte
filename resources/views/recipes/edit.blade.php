@@ -13,7 +13,7 @@
         <textarea type="text" name="ing" id="" placeholder="材料">{{ old('ing', $recipe['ing']) }}</textarea><br>
         
         <div id="steps">
-            <input type="text" value="{{$recipe['steps'][0]['version_name']}}" name="version_name" placeholder="手順を更新する理由/コメント" class="">
+            <input type="text" value="{{$recipe['steps'][0]['version_name']}}" name="version_name" placeholder="この手順のタイトル　(Ex:手順を更新する理由)" class="">
             @foreach($recipe['steps'] as $i => $os)
                 @if ($os['created_at'] == $recipe['steps'][(count($recipe['steps'])-1)]['created_at'])
                     <div class="step">
