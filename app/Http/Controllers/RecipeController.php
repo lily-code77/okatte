@@ -82,7 +82,8 @@ class RecipeController extends Controller
                 'recipe_id' => $recipe_id,
                 'version_name' => $comment,
                 'step_number' => $key + 1,
-                'description' => $step
+                'description' => $step,
+                'created_at' => now(),
             ];
         }
         Step::insert($steps);
@@ -164,7 +165,8 @@ class RecipeController extends Controller
                 'recipe_id' => $recipe_id,
                 'version_name' => $comment,
                 'step_number' => $key + 1,
-                'description' => $step
+                'description' => $step,
+                'created_at' => now(),
             ];
         }
         Step::insert($steps);
