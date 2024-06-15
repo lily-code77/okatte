@@ -16,19 +16,14 @@
             <input type="text" value="{{$recipe['steps'][0]['version_name']}}" name="version_name" placeholder="この手順のタイトル　(Ex:手順を更新する理由)" class="">
             @foreach($recipe['steps'] as $i => $os)
                 @if ($os['created_at'] == $recipe['steps'][(count($recipe['steps'])-1)]['created_at'])
-                    @if ($os['id'] == $step_id)
                     <div class="step">
                             <p class="step-number">手順{{$os['step_number']}}</p>
                             <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
-                            <input type="text" value="{{$posts['reflectDescription']}}" name="steps[]" placeholder="手順を入力" class="">
-                            <a href="{{ route('recipe.changeHistory',  ['recipe' => $recipe['id'], 'step' => $os['id']]) }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
-                            <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
-                    </div>
-                    @endif
-                    <div class="step">
-                            <p class="step-number">手順{{$os['step_number']}}</p>
-                            <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
-                            <input type="text" value="{{$os['description']}}" name="steps[]" placeholder="手順を入力" class="">
+                            @if ($os['id'] == $step_id)
+                                <input type="text" value="{{$posts['reflectDescription']}}" name="steps[]" placeholder="手順を入力" class="">
+                            @else
+                                <input type="text" value="{{$os['description']}}" name="steps[]" placeholder="手順を入力" class="">
+                            @endif
                             <a href="{{ route('recipe.changeHistory',  ['recipe' => $recipe['id'], 'step' => $os['id']]) }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
                             <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
                     </div>
