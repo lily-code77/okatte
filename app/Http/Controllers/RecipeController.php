@@ -199,10 +199,13 @@ class RecipeController extends Controller
         return view('recipes.changeHistory', compact('recipe', 'step'));
     }
 
-    public function reflectHistory(Request $request)
+    public function reflectHistory(Request $request, string $recipe_id, string $step_id)
     {
         $posts = $request->all();
-        dd($posts);
-        // return view('recipes.reflectHistory');
+        $recipe = Recipe::with(['steps', 'user'])
+            ->where('recipes.id', $recipe_id)
+            ->first()->toArray();
+
+        return view('recipes.reflectHistory', compact('posts', 'recipe', 'step_id'));
     }
 }

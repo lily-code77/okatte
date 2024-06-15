@@ -24,6 +24,10 @@
     <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <script src="/js/recipe/create.js"></script>
     
 </head>
