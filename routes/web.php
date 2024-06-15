@@ -71,7 +71,7 @@ Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middle
 
 
 // 変更履歴を作成中のレシピに反映させる
-Route::get('/recipes/change_history/{recipe}', [RecipeController::class, 'changeHistory'])->middleware(['auth', 'verified'])->name('recipe.changeHistory');
+Route::get('/recipes/change_history/{recipe}/{step}', [RecipeController::class, 'changeHistory'])->middleware(['auth', 'verified'])->name('recipe.changeHistory');
 Route::post('/recipes/reflect_history/{step}', [RecipeController::class, 'reflectHistory'])->middleware(['auth', 'verified'])->name('recipe.reflectHistory');
 
 //検索

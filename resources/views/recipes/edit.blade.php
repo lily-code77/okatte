@@ -20,7 +20,7 @@
                             <p class="step-number">手順{{$os['step_number']}}</p>
                             <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
                             <input type="text" value="{{$os['description']}}" name="steps[]" placeholder="手順を入力" class="">
-                            <a href="{{ route('recipe.changeHistory',  ['recipe' => $recipe['id']]) }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
+                            <a href="{{ route('recipe.changeHistory',  ['recipe' => $recipe['id'], 'step' => $os['id']]) }}"><img src="{{ asset('images/index/history.svg') }}" alt="変更履歴"></a>
                             <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
                     </div>
                 @endif

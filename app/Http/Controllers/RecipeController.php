@@ -186,15 +186,17 @@ class RecipeController extends Controller
         return to_route('dashboard')->with('success', 'レシピを削除しました');
     }
 
-    public function changeHistory(string $id)
+    public function changeHistory(string $recipe_id, string $step_id)
     {
         // $recipe = Recipe::find($id);
 
         $recipe = Recipe::with(['steps', 'user'])
-            ->where('recipes.id', $id)
+            ->where('recipes.id', $recipe_id)
             ->first()->toArray();
+
+        $step = $step_id;
         // return view('recipes.changeHistory', ['recipe' => $recipe]);
-        return view('recipes.changeHistory', compact('recipe'));
+        return view('recipes.changeHistory', compact('recipe', 'step'));
     }
 
     public function reflectHistory(string $id)
