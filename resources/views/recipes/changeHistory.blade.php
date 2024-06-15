@@ -4,7 +4,7 @@
 <section>
 <h3>【{{ $recipe['title'] }}】_手順の変更履歴一覧</h3>
 
-<form action="" method="post">
+<form action="{{ route('recipe.reflectHistory',  ['recipe' => $recipe['id'], 'step' => $step]) }}" method="post">
     <button class="" type="submit">反映させる</button>
     <p>作成中のレシピに反映させたい過去の手順を一つ選んでください。</p>
         @foreach($recipe['steps'] as $i => $os)

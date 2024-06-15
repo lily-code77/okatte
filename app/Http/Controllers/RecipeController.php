@@ -199,9 +199,10 @@ class RecipeController extends Controller
         return view('recipes.changeHistory', compact('recipe', 'step'));
     }
 
-    public function reflectHistory(string $id)
+    public function reflectHistory(Request $request)
     {
-        //備忘録：route:recipe.changeHistoryのurlに、｛step}の追記が必要かも、変数二つのURLの送信について調査が必要
-        return view('recipes.reflectHistory');
+        $posts = $request->all();
+        dd($posts);
+        // return view('recipes.reflectHistory');
     }
 }
