@@ -12,7 +12,7 @@
                 @if ($os['step_number'] == 1)
                     <p class="version_name">手順のタイトル=>{{$os['version_name']}}</p>
                 @endif
-                    <input type="radio" name="reflectHistory" value="{{$os['description']}}">手順{{$os['step_number']}} : {{$os['description']}}<br>
+                    <input type="radio" name="reflectDescription" value="{{$os['description']}}">手順{{$os['step_number']}} : {{$os['description']}}<br>
 
         @endforeach
 </form>
