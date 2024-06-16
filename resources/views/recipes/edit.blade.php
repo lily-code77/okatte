@@ -38,10 +38,6 @@
             <button class="" type="submit" name="status" value="publish">公開設定</button>
         </p>
     </form>
-        
-    <form action="">
-        <button class="" type="submit" name="" value="">新たなレシピとして公開する</button>
-    </form>
 </section>
 
 <script>
