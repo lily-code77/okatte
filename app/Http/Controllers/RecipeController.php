@@ -222,6 +222,7 @@ class RecipeController extends Controller
         $recipe->steps->each(function ($step) use ($newRecipe) {
             $newStep = $step->replicate();
             $newStep->recipe_id = $newRecipe->id; //外部キーに複製後のidを指定
+            $newStep->created_at = $step->created_at;
             $newStep->save();
         });
 
