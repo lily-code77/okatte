@@ -74,6 +74,9 @@ Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middle
 Route::get('/recipes/change_history/{recipe}/{step}', [RecipeController::class, 'changeHistory'])->middleware(['auth', 'verified'])->name('recipe.changeHistory');
 Route::post('/recipes/reflect_history/{recipe}/{step}', [RecipeController::class, 'reflectHistory'])->middleware(['auth', 'verified'])->name('recipe.reflectHistory');
 
+// レシピを複製する
+Route::post('/recipes/{recipe}', [RecipeController::class, 'clone'])->middleware(['auth', 'verified'])->name('recipe.clone');
+
 //検索
 //キーワードを受け取って検索結果を表示するルーティング
 Route::get('/search/find', [SearchController::class, 'find'])->name('search.find');

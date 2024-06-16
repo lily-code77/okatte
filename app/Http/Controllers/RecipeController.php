@@ -208,4 +208,23 @@ class RecipeController extends Controller
 
         return view('recipes.reflectHistory', compact('posts', 'recipe', 'step_id'));
     }
+
+    public function clone(string $id)
+    {
+        // 複製元を取得（リレーションデータ付き）
+        $recipe = Recipe::with('steps')->findOrFail($id);
+
+        // 複製
+        $newRecipe = $recipe->replicate();
+        $newRecipe->save();
+
+        // 複製元データのリレーションデータを複製
+        $recipe->steps->each(function ($step) use ($newRecipe) {
+            $newStep = $step->replicate();
+            $newStep->recipe_id = $newRecipe->id; //外部キーに複製後のidを指定
+            $newStep->save();
+        });
+
+        return to_route('dashboard');
+    }
 }

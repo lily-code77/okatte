@@ -126,6 +126,12 @@
                                 </form>
                             </div>
                             <div>
+                                <form method="POST" action="{{ route('recipe.clone', ['recipe' => $myRecipe->id ])}}">
+                                    @csrf
+                                    <button type="submit" class="btn bg-blue-500 rounded-lg">コピーする</button>
+                                </form>
+                            </div>
+                            <div>
                                 <form action="{{ route('recipe.destroy', ['recipe' => $myRecipe->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
