@@ -216,6 +216,7 @@ class RecipeController extends Controller
 
         // 複製
         $newRecipe = $recipe->replicate();
+        $newRecipe->title = 'コピー_'. $recipe->title;
         $newRecipe->save();
 
         // 複製元データのリレーションデータを複製
