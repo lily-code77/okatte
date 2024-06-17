@@ -31,6 +31,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         //バリデーション
         $validator = Validator::make($request->all(), [
             'title' => 'required | max:255',
@@ -45,6 +46,7 @@ class ArticleController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
+        
         //以下に登録処理を記述（Eloquentモデル）
         $article = new Article();
         $article->user_id = Auth::user()->id;
