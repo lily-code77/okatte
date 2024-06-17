@@ -18,18 +18,39 @@
 
 <script>
     // Quillエディターの初期化
+    // const quill = new Quill('#editor', {
+    //     modules: {
+    //         toolbar: [
+    //             ['bold', 'italic', 'underline', 'strike'],
+    //             [{'color': []}, {'background': []}],
+    //             ['link', 'blockquote', 'image', 'video'],
+    //             [{list: 'ordered'}, {list: 'bullet'}]
+    //         ]
+    //     },
+    //     placeholder: '食材、調理方法、味付け、調理器具など共有/記録したい内容を書いてください。',
+    //     theme: 'snow'
+    // });
+
     const quill = new Quill('#editor', {
+        theme: 'snow',
         modules: {
-            toolbar: [
-                ['bold', 'italic', 'underline', 'strike'],
+            toolbar: {
+            container: [['bold', 'italic', 'underline', 'strike'],
                 [{'color': []}, {'background': []}],
                 ['link', 'blockquote', 'image', 'video'],
-                [{list: 'ordered'}, {list: 'bullet'}]
-            ]
+                [{list: 'ordered'}, {list: 'bullet'}]],
+            handlers: {
+                image: imageHandler
+            }
+            }
         },
-        placeholder: '食材、調理方法、味付け、調理器具など共有/記録したい内容を書いてください。',
-        theme: 'snow'
-    });
+    }); 
+
+    function imageHandler() {
+        var range = this.quill.getSelection();
+        var value = prompt('What is the image URL');
+        this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+    }
 
     // フォームのsubmitイベントにリスナーを追加
     document.querySelector('form[name="postArticle"]').addEventListener('submit', function(event) {
