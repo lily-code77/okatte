@@ -11,15 +11,11 @@ use App\Models\Recipe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('index');
-// })->name('index');
 
 Route::get('/', function () {
-    $questions = Question::all();
     $articles = Article::all();
     $recipes = Recipe::all();
-    return view('index', ['questions' => $questions, 'articles' => $articles, 'recipes' => $recipes]);
+    return view('index', ['articles' => $articles, 'recipes' => $recipes]);
 })->name('index');
 
 Route::get('/postSelection',function() {
@@ -28,10 +24,9 @@ Route::get('/postSelection',function() {
 
 //認証
 Route::get('/dashboard', function () {
-    $myQuestions = Question::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
     $myArticles = Article::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
     $myRecipes = Recipe::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
-    return view('dashboard', ['myQuestions' => $myQuestions, 'myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
+    return view('dashboard', ['myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -41,16 +36,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-//質問
-Route::get('/questions', [QuestionController::class, 'index'])->name('question.index');
-Route::get('/questions/create', [QuestionController::class, 'create'])->name('question.create');
-Route::post('/questions/store', [QuestionController::class, 'store'])->name('question.store');
-// ↓を適用させると、マイページ画面にエラーが出る。
-Route::get('/questions/{question}', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
-// Route::get('/questions/edit', [QuestionController::class, 'edit'])->middleware(['auth', 'verified'])->name('question.edit');
-Route::put('/questions/{question}', [QuestionController::class, 'update'])->middleware(['auth', 'verified'])->name('question.update');
-Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('question.destroy');
 
 //記事
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
