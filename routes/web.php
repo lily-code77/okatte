@@ -33,6 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/myPage', function () {
+    $myArticles = Article::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
+    $myRecipes = Recipe::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
+    return view('myPage', ['myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
+})->middleware(['auth', 'verified'])->name('myPage');
+
 require __DIR__.'/auth.php';
 
 //記事

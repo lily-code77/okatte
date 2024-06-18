@@ -49,7 +49,7 @@
             <li class="headerbtn" id="post"><a href="/postSelection"><button class="btn" type="button" name="post">投稿する</button></a></li>
                 @if (Route::has('login'))
                     @auth
-                    <li class="headerbtn"><a href="{{ url('/dashboard') }}" class=""><button class="btn" type="button" name="login">マイページ</button></a></li>
+                    <li class="headerbtn"><a href="{{ url('/myPage') }}" class=""><button class="btn" type="button" name="login">マイページ</button></a></li>
                     @else
                     <li class="headerbtn"><a href="{{ route('login') }}" class=""><button class="btn" type="button" name="login">ログイン</button></a></li>
                         @if (Route::has('register'))
