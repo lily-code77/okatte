@@ -49,6 +49,8 @@
                         </div>
                     </tr>
                     @endforeach
+                    <!-- ページャー -->
+                    {{ $myArticles->links() }}
                 </div>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -99,6 +101,8 @@
                         </div>
                     </tr>
                     @endforeach
+                    <!-- ページャー -->
+                    {{ $myRecipes->links() }}
                 </div>
             </div>
         </div>

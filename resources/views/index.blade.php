@@ -10,7 +10,7 @@
 </section>
 
 <section class="">
-<!-- 項目毎ではなく、ごちゃまぜの最新順にでるように書き換え必要 -->
+
 @foreach($articles as $article)
     <tr>
         <div class="q_wrapper">
@@ -30,6 +30,9 @@
         </div>
     </tr>
 @endforeach
+<!-- ページャー -->
+{{ $articles->links() }}
+
 @foreach($recipes as $recipe)
     <tr>
         <div class="q_wrapper">
@@ -49,6 +52,9 @@
         </div>
     </tr>
 @endforeach
+<!-- ページャー -->
+{{ $recipes->links() }}
 </section>
+
 
 @endsection

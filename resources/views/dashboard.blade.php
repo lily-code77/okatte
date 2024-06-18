@@ -30,6 +30,9 @@
         </div>
     </tr>
 @endforeach
+<!-- ページャー -->
+{{ $myArticles->links() }}
+
 @foreach($myRecipes as $recipe)
     <tr>
         <div class="q_wrapper">
@@ -49,6 +52,8 @@
         </div>
     </tr>
 @endforeach
+<!-- ページャー -->
+{{ $myRecipes->links() }}
 </section>
 
 @endsection

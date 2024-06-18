@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    $articles = Article::all();
-    $recipes = Recipe::all();
+    $articles = Article::latest('updated_at')->paginate(3);
+    $recipes = Recipe::latest('updated_at')->paginate(3);
     return view('index', ['articles' => $articles, 'recipes' => $recipes]);
 })->name('index');
 
