@@ -11,46 +11,50 @@
 
 <section class="">
 <!-- 項目毎ではなく、ごちゃまぜの最新順にでるように書き換え必要 -->
-@foreach($myArticles as $article)
+@foreach($myArticles as $myArticle)
+<a href="{{ route('article.show', ['article' => $myArticle->id]) }}">
     <tr>
         <div class="q_wrapper">
             <p>記事</p>
             <td>
                 <div class="q_list">
-                    <img class=q_img src="{{ asset('storage/' . $article->image) }}" alt="">
+                    <img class=q_img src="{{ asset('storage/' . $myArticle->image) }}" alt="">
                 </div>
             </td>
             <td>
                 <div class="q_list_content">
-                    <p class="q_list_title">{{ $article->title }}</p>
-                    <p class="q_list_tags">{{ $article->tags }}</p>
-                    <p class="q_list_updated">{{ $article->updated_at }}</p>
+                    <p class="q_list_title">{{ $myArticle->title }}</p>
+                    <p class="q_list_tags">{{ $myArticle->tags }}</p>
+                    <p class="q_list_updated">{{ $myArticle->updated_at }}</p>
                 </div>
             </td>
         </div>
     </tr>
+</a>
 @endforeach
 <!-- ページャー -->
 {{ $myArticles->links() }}
 
-@foreach($myRecipes as $recipe)
+@foreach($myRecipes as $myRecipe)
+<a href="{{ route('recipe.show', ['recipe' => $myRecipe->id]) }}">
     <tr>
         <div class="q_wrapper">
             <p>レシピ</p>
             <td>
                 <div class="q_list">
-                    <img class=q_img src="{{ asset('storage/' . $recipe->image) }}" alt="">
+                    <img class=q_img src="{{ asset('storage/' . $myRecipe->image) }}" alt="">
                 </div>
             </td>
             <td>
                 <div class="q_list_content">
-                    <p class="q_list_title">{{ $recipe->title }}</p>
-                    <p class="q_list_tags">{{ $recipe->tags }}</p>
-                    <p class="q_list_updated">{{ $recipe->updated_at }}</p>
+                    <p class="q_list_title">{{ $myRecipe->title }}</p>
+                    <p class="q_list_tags">{{ $myRecipe->tags }}</p>
+                    <p class="q_list_updated">{{ $myRecipe->updated_at }}</p>
                 </div>
             </td>
         </div>
     </tr>
+</a>
 @endforeach
 <!-- ページャー -->
 {{ $myRecipes->links() }}

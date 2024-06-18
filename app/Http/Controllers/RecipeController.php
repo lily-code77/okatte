@@ -94,9 +94,9 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Recipe $recipe)
+    public function show(string $id)
     {
-        //
+        dd($id);
     }
 
     /**

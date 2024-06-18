@@ -12,6 +12,7 @@
 <section class="">
 
 @foreach($articles as $article)
+<a href="{{ route('article.show', ['article' => $article->id]) }}">
     <tr>
         <div class="q_wrapper">
             <p>記事</p>
@@ -29,11 +30,13 @@
             </td>
         </div>
     </tr>
+</a>
 @endforeach
 <!-- ページャー -->
 {{ $articles->links() }}
 
 @foreach($recipes as $recipe)
+<a href="{{ route('recipe.show', ['recipe' => $recipe->id]) }}">
     <tr>
         <div class="q_wrapper">
             <p>レシピ</p>
@@ -51,6 +54,7 @@
             </td>
         </div>
     </tr>
+</a>
 @endforeach
 <!-- ページャー -->
 {{ $recipes->links() }}
