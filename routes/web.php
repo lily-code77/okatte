@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\SearchController;
 use App\Models\Article;
-use App\Models\Question;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

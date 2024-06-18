@@ -46,7 +46,6 @@
                     <button>検索する</button>
                 </form>
             </li>
-            <!-- <li class="headerbtn" id="question"><a href="/questions"><button class="btn" type="button" name="question">質問 / 回答</button></a></li> -->
             <li class="headerbtn" id="post"><a href="/postSelection"><button class="btn" type="button" name="post">投稿する</button></a></li>
                 @if (Route::has('login'))
                     @auth
