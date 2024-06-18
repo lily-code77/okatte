@@ -96,7 +96,11 @@ class RecipeController extends Controller
      */
     public function show(string $id)
     {
-        dd($id);
+        $recipe = Recipe::with(['steps', 'user'])
+            ->where('recipes.id', $id)
+            ->first()->toArray();
+        // dd($recipe);
+        return view('recipes.show', compact('recipe'));
     }
 
     /**

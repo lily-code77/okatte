@@ -42,9 +42,9 @@ Route::get('/myPage', function () {
 require __DIR__.'/auth.php';
 
 //記事
-Route::get('/index/{article}', [ArticleController::class, 'show'])->name('article.show');
-Route::get('/dashboard/{article}', [ArticleController::class, 'show'])->name('article.show');
-Route::get('/myPage/{article}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/index/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/dashboard/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/myPage/article/{article}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/articles/store', [ArticleController::class, 'store'])->name('article.store');
 Route::get('/articles/{article}', [ArticleController::class, 'edit'])->middleware(['auth', 'verified'])->name('article.edit');
@@ -53,9 +53,9 @@ Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->mid
 
 
 //レシピ
-Route::get('/index/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/dashboard/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/myPage/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
+Route::get('/index/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
+Route::get('/dashboard/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
+Route::get('/myPage/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe.create');
 Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.store');
 Route::get('/recipes/{recipe}', [RecipeController::class, 'edit'])->middleware(['auth', 'verified'])->name('recipe.edit');

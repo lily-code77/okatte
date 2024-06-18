@@ -17,20 +17,6 @@
 </section>
 
 <script>
-    // Quillエディターの初期化
-    // const quill = new Quill('#editor', {
-    //     modules: {
-    //         toolbar: [
-    //             ['bold', 'italic', 'underline', 'strike'],
-    //             [{'color': []}, {'background': []}],
-    //             ['link', 'blockquote', 'image', 'video'],
-    //             [{list: 'ordered'}, {list: 'bullet'}]
-    //         ]
-    //     },
-    //     placeholder: '食材、調理方法、味付け、調理器具など共有/記録したい内容を書いてください。',
-    //     theme: 'snow'
-    // });
-
     const quill = new Quill('#editor', {
         theme: 'snow',
         modules: {

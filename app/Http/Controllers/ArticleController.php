@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cookie;
 
 class ArticleController extends Controller
 {
@@ -67,7 +68,18 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        dd($id);
+        $article = Article::with(['user'])
+            ->where('articles.id', $id)
+            ->first()->toArray();
+        // dd($recipe);
+
+        // クッキーを設定する例
+        $cookie = cookie('name', 'value', 60); // 60分間有効なクッキーを設定
+
+        // SameSite属性を設定する
+        $cookie->withSameSite('None');
+
+        return view('articles.show', compact('article'));
     }
 
     /**
