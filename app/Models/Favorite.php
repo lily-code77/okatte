@@ -9,7 +9,7 @@ class Favorite extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'article_id'];
+    protected $fillable = ['user_id', 'article_id', 'recipe_id'];
 
     public function user()
     {
@@ -19,5 +19,10 @@ class Favorite extends Model
     public function article()
     {
         return $this->belongsTo(Article::class);
+    }
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
     }
 }

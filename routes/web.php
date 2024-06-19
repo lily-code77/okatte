@@ -80,3 +80,5 @@ Route::get('/search/find', [SearchController::class, 'find'])->name('search.find
 // LIKE機能
 Route::post('articles/{article}/favorite', [FavoriteController::class, 'store'])->name('favorites.store');
 Route::delete('articles/{article}/favorite', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+Route::post('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeStore'])->name('favorites.store');
+Route::delete('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeDestroy'])->name('favorites.destroy');

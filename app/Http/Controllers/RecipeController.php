@@ -96,9 +96,9 @@ class RecipeController extends Controller
      */
     public function show(string $id)
     {
-        $recipe = Recipe::with(['steps', 'user'])
+        $recipe = Recipe::with(['steps', 'user', 'favorites'])
             ->where('recipes.id', $id)
-            ->first()->toArray();
+            ->first();
         // dd($recipe);
         return view('recipes.show', compact('recipe'));
     }

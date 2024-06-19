@@ -15,7 +15,6 @@
 
 <!-- LIKE機能 -->
 <div>
-
 @if($article->favorites->where('user_id', Auth::id())->count())
     <form action="{{ route('favorites.destroy', $article) }}" method="POST">
         @csrf

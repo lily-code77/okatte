@@ -9,6 +9,8 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'tags', 'intro', 'ing', 'comment', 'memo'];
+
     public function steps()
     {
         return $this->hasMany(Step::class);
@@ -17,6 +19,11 @@ class Recipe extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 
     // 親データ（Recipe）が削除されたら、子データ（Step）も削除される
