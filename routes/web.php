@@ -87,6 +87,7 @@ Route::delete('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeDe
 // Bookmark機能
 Route::post('articles/{article}/bookmark', [BookmarkController::class, 'store'])->name('bookmarks.store');
 Route::delete('articles/{article}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
+Route::get('bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
 
 
 

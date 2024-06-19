@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Bookmark;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        $bookmarkedArticles = $user->bookmarkedArticles()->with('user')->get();
+
+        return view('bookmarks.index', compact('bookmarkedArticles'));
+    }
+
     public function store(Request $request, $articleId)
     {
         $user = Auth::user();
