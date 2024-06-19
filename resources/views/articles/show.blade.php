@@ -16,13 +16,13 @@
 <!-- LIKE機能 -->
 <div>
 @if($article->favorites->where('user_id', Auth::id())->count())
-    <form action="{{ route('favorites.destroy', $article) }}" method="POST">
+    <form id="unfavorite-form" action="{{ route('favorites.destroy', $article) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">Unfavorite</button>
     </form>
 @else
-    <form action="{{ route('favorites.store', $article) }}" method="POST">
+    <form id="favorite-form" action="{{ route('favorites.store', $article) }}" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary">Favorite</button>
     </form>
@@ -56,4 +56,16 @@
 </section>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('form').forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!@json(Auth::check())) {
+                    event.preventDefault();
+                    window.location.href = '{{ route('login') }}';
+                }
+            });
+        });
+    });
+</script>
 @endsection
