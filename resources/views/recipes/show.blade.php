@@ -30,16 +30,34 @@
 <!-- LIKE機能 -->
 <div>
 @if($recipe->favorites->where('user_id', Auth::id())->count())
-    <form action="{{ route('favorites.destroy', $recipe) }}" method="POST">
+    <form action="{{ route('favorites.recipeDestroy', $recipe) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">Unfavorite</button>
     </form>
 @else
-    <form action="{{ route('favorites.store', $recipe) }}" method="POST">
+    <form action="{{ route('favorites.recipeStore', $recipe) }}" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary">Favorite</button>
     </form>
+@endif
+</div>
+
+<!-- Bookmark機能 -->
+<div>
+@if(Auth::check())
+    @if(Auth::user()->bookmarkedRecipes->contains($recipe->id))
+        <form action="{{ route('bookmarks.recipeDestroy', $recipe) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Unbookmark</button>
+        </form>
+    @else
+        <form action="{{ route('bookmarks.recipeStore', $recipe) }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-primary">Bookmark</button>
+        </form>
+    @endif
 @endif
 </div>
 

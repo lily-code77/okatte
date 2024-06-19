@@ -1,8 +1,7 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
     <div class="container">
-        <h1>ブックマーク</h1>
+    {{ __("ブックマーク") }}
         @if($bookmarkedArticles->isEmpty())
             <p>ブックマークした記事／レシピはありません</p>
         @else
@@ -15,7 +14,16 @@
                         </a>
                     </li>
                 @endforeach
+                @foreach($bookmarkedRecipes as $recipe)
+                    <li class="list-group-item">
+                        <a href="{{ route('recipe.show', $recipe->id) }}">
+                            <img class=q_img src="{{ asset('storage/' . $recipe->image) }}" alt="">
+                            {{ $recipe->title }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         @endif
     </div>
-@endsection
+
+</x-app-layout>
