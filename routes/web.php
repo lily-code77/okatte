@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\SearchController;
@@ -75,3 +76,7 @@ Route::post('/recipes/{recipe}', [RecipeController::class, 'clone'])->middleware
 //検索
 //キーワードを受け取って検索結果を表示するルーティング
 Route::get('/search/find', [SearchController::class, 'find'])->name('search.find');
+
+// LIKE機能
+Route::post('articles/{article}/favorite', [FavoriteController::class, 'store'])->name('favorites.store');
+Route::delete('articles/{article}/favorite', [FavoriteController::class, 'destroy'])->name('favorites.destroy');

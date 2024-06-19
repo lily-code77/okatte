@@ -13,6 +13,23 @@
     <p>{!! $article['content'] !!}</p>
 </div>
 
+<!-- LIKE機能 -->
+<div>
+
+@if($article->favorites->where('user_id', Auth::id())->count())
+    <form action="{{ route('favorites.destroy', $article) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Unfavorite</button>
+    </form>
+@else
+    <form action="{{ route('favorites.store', $article) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Favorite</button>
+    </form>
+@endif
+</div>
+
 <!-- SNS各種のシェアボタン -->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v20.0" nonce="BkDmKogm"></script>

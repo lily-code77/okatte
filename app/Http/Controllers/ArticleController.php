@@ -68,16 +68,16 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        $article = Article::with(['user'])
+        $article = Article::with(['user', 'favorites'])
             ->where('articles.id', $id)
-            ->first()->toArray();
+            ->first();
         // dd($recipe);
 
         // クッキーを設定する例
-        $cookie = cookie('name', 'value', 60); // 60分間有効なクッキーを設定
+        //$cookie = cookie('name', 'value', 60); // 60分間有効なクッキーを設定
 
         // SameSite属性を設定する
-        $cookie->withSameSite('None');
+        //$cookie->withSameSite('None');
 
         return view('articles.show', compact('article'));
     }
