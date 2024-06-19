@@ -20,4 +20,14 @@ class Article extends Model
     {
         return $this->hasMany(Favorite::class);
     }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public function bookmarkedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'bookmarks');
+    }
 }

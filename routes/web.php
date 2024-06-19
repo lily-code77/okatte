@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
@@ -82,3 +83,11 @@ Route::post('articles/{article}/favorite', [FavoriteController::class, 'store'])
 Route::delete('articles/{article}/favorite', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 Route::post('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeStore'])->name('favorites.store');
 Route::delete('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeDestroy'])->name('favorites.destroy');
+
+// Bookmark機能
+Route::post('articles/{article}/bookmark', [BookmarkController::class, 'store'])->name('bookmarks.store');
+Route::delete('articles/{article}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
+
+
+
+

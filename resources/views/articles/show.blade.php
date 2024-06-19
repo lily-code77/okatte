@@ -29,6 +29,24 @@
 @endif
 </div>
 
+<!-- Bookmark機能 -->
+<div>
+@if(Auth::check())
+    @if(Auth::user()->bookmarkedArticles->contains($article->id))
+        <form action="{{ route('bookmarks.destroy', $article) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Unbookmark</button>
+        </form>
+    @else
+        <form action="{{ route('bookmarks.store', $article) }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-primary">Bookmark</button>
+        </form>
+    @endif
+@endif
+</div>
+
 <!-- SNS各種のシェアボタン -->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v20.0" nonce="BkDmKogm"></script>
