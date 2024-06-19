@@ -31,19 +31,17 @@
 
 <!-- Bookmark機能 -->
 <div>
-@if(Auth::check())
-    @if(Auth::user()->bookmarkedArticles->contains($article->id))
-        <form action="{{ route('bookmarks.destroy', $article) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Unbookmark</button>
-        </form>
-    @else
-        <form action="{{ route('bookmarks.store', $article) }}" method="POST">
-            @csrf
-            <button type="submit" class="btn btn-primary">Bookmark</button>
-        </form>
-    @endif
+@if($article->bookmarks->where('user_id', Auth::id())->count())
+    <form action="{{ route('bookmarks.destroy', $article) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Unbookmark</button>
+    </form>
+@else
+    <form action="{{ route('bookmarks.store', $article) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Bookmark</button>
+    </form>
 @endif
 </div>
 

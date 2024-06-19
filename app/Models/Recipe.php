@@ -26,6 +26,11 @@ class Recipe extends Model
         return $this->hasMany(Favorite::class);
     }
 
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
     // 親データ（Recipe）が削除されたら、子データ（Step）も削除される
     public static function boot()
     {

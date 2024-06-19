@@ -45,19 +45,17 @@
 
 <!-- Bookmark機能 -->
 <div>
-@if(Auth::check())
-    @if(Auth::user()->bookmarkedRecipes->contains($recipe->id))
-        <form action="{{ route('bookmarks.recipeDestroy', $recipe) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Unbookmark</button>
-        </form>
-    @else
-        <form action="{{ route('bookmarks.recipeStore', $recipe) }}" method="POST">
-            @csrf
-            <button type="submit" class="btn btn-primary">Bookmark</button>
-        </form>
-    @endif
+@if($recipe->bookmarks->where('user_id', Auth::id())->count())
+    <form action="{{ route('bookmarks.recipeDestroy', $recipe) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Unbookmark</button>
+    </form>
+@else
+    <form action="{{ route('bookmarks.recipeStore', $recipe) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Bookmark</button>
+    </form>
 @endif
 </div>
 
@@ -68,8 +66,19 @@
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 
-
 </section>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('form').forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!@json(Auth::check())) {
+                    event.preventDefault();
+                    window.location.href = '{{ route('login') }}';
+                }
+            });
+        });
+    });
+</script>
 
 @endsection
