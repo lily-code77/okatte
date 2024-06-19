@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class);
     }
 
+    /**
+     * Get the articles that the user has bookmarked.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function bookmarkedArticles()
     {
         return $this->belongsToMany(Article::class, 'bookmarks');
