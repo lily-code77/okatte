@@ -167,7 +167,7 @@ a {
     font-weight: bold;
 }
 
-.q_list_tags {
+.q_list_tags, .q_list_intro {
     font-size: 15px;
 }
 
