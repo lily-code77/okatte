@@ -1,7 +1,5 @@
-@extends('layouts.default')
-@section('title', 'トップページ')
+<x-app-layout>
 
-@section('content')
 <section class="">
     <div class="">
     <h1 class="">開催中の記事投稿キャンペーン</h1>
@@ -10,60 +8,53 @@
 </section>
 
 <section class="">
-<!-- 項目毎ではなく、ごちゃまぜの最新順にでるように書き換え必要 -->
-@foreach($myArticles as $myArticle)
-    @if ($myArticle['status'] == 'publish')
-        <a href="{{ route('article.show', ['article' => $myArticle->id]) }}">
-            <tr>
-                <div class="q_wrapper">
-                    <p>記事</p>
-                    <td>
-                        <div class="q_list">
-                            <img class=q_img src="{{ asset('storage/' . $myArticle->image) }}" alt="">
+    <!-- 項目毎ではなく、ごちゃまぜの最新順にでるように書き換え必要 -->
+    @foreach($myArticles as $myArticle)
+        @if ($myArticle['status'] == 'publish')
+            <div class="container m-8 bg-white rounded-lg shadow">
+                <a class="m-1" href="{{ route('article.show', ['article' => $myArticle->id]) }}">
+                    <div class="flex">
+                        <p class="mx-5 tcl">記事</p>
+                        <img class="w-48" src="{{ asset('storage/' . $myArticle->image) }}" alt="">
+                        <div class="ml-5 leading-relaxed">
+                            <p class="text-base tcl">@ {{ $myArticle['user']['name'] }}</p>
+                            <p class="text-xs text-slate-400">{{ $myArticle->updated_at }}</p>
+                            <p class="text-2xl font-bold text-pretty tcl">{{ $myArticle->title }}</p>
+                            <p class="text-base text-slate-500">{{ $myArticle->tags }}</p>
                         </div>
-                    </td>
-                    <td>
-                        <div class="q_list_content">
-                            <p class="q_list_title">{{ $myArticle->title }}</p>
-                            <p class="q_list_tags">{{ $myArticle->tags }}</p>
-                            <p class="q_list_updated">{{ $myArticle->updated_at }}</p>
-                        </div>
-                    </td>
-                </div>
-            </tr>
-        </a>
-    @endif
-@endforeach
-<!-- ページャー -->
-{{ $myArticles->links() }}
+                    </div>
+                </a>
+            </div>
+            
+        @endif
+    @endforeach
+    <!-- ページャー -->
+    <div class="mx-5">
+        {{ $myArticles->links() }}
+    </div>
 
-@foreach($myRecipes as $myRecipe)
-    @if ($myRecipe['status'] == 'publish')
-        <a href="{{ route('recipe.show', ['recipe' => $myRecipe->id]) }}">
-            <tr>
-                <div class="q_wrapper">
-                    <p>レシピ</p>
-                    <td>
-                        <div class="q_list">
-                            <img class=q_img src="{{ asset('storage/' . $myRecipe->image) }}" alt="">
+    @foreach($myRecipes as $myRecipe)
+        @if ($myRecipe['status'] == 'publish')
+            <div class="container m-8 bg-white rounded-lg shadow">
+                <a class="m-1" href="{{ route('recipe.show', ['recipe' => $myRecipe->id]) }}">
+                    <div class="flex">
+                        <p class="mx-5 tcl">レシピ</p>
+                        <img class="w-48" src="{{ asset('storage/' . $myRecipe->image) }}" alt="">
+                        <div class="ml-5 leading-relaxed">
+                            <p class="text-base tcl">@ {{ $myRecipe['user']['name'] }}</p>
+                            <p class="text-xs text-slate-400">{{ $myRecipe->updated_at }}</p>
+                            <p class="text-2xl font-bold text-pretty tcl">{{ $myRecipe->title }}</p>
+                            <p class="text-base text-slate-500">{{ $myRecipe->tags }}</p>
+                            <p class="text-base line-clamp-3 tcl">{{ $myRecipe->intro }}</p>
                         </div>
-                    </td>
-                    <td>
-                        
-                        <div class="q_list_content">
-                            <p class="q_list_title">{{ $myRecipe->title }}</p>
-                            <p class="q_list_tags">{{ $myRecipe->tags }}</p>
-                            <p class="q_list_intro">{{ $myRecipe->intro }}</p>
-                            <p class="q_list_updated">{{ $myRecipe->updated_at }}</p>
-                        </div>
-                    </td>
-                </div>
-            </tr>
-        </a>
-    @endif
-@endforeach
-<!-- ページャー -->
-{{ $myRecipes->links() }}
-</section>
-
-@endsection
+                    </div>
+                </a>
+            </div>    
+        @endif
+    @endforeach
+    <!-- ページャー -->
+    <div class="mx-5">
+        {{ $myRecipes->links() }}
+    </div>
+    </section>
+</x-app-layout>
