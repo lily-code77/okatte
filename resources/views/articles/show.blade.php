@@ -1,7 +1,5 @@
-@extends('layouts.plain')
-
-@section('content')
-<section>
+<x-app-layout>
+<section class="container mx-3">
 <h3>【{{ $article['title'] }}】</h3>
 <p>{{ $article['tags'] }}</p>
 <h4>made by {{ $article['user']['name'] }}</h4>
@@ -66,4 +64,4 @@
         });
     });
 </script>
-@endsection
+</x-app-layout>

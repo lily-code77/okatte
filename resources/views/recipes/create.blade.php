@@ -33,41 +33,38 @@
     </form>
 </section>
 
-<x-slot name="scripts">
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-        window.onload = function() {
-            let steps = document.getElementById('steps');
+<script>
+    window.onload = function() {
+        let steps = document.getElementById('steps');
 
-            Sortable.create(steps, {
-                animation: 150,
-                handle: '.handle',
-                onEnd: function(evt) {
-                    var items = steps.querySelectorAll('.step');
-                    items.forEach(function(item, index) {
-                        item.querySelector('.step-number').innerHTML = '手順' + (index + 1);
-                    });
-                }
-            });
-        };
-
-        document.getElementById('steps').addEventListener('click', function(evt) {
-            if (evt.target.classList.contains('step-delete')) {
-                evt.target.closest('.step').remove();
+        Sortable.create(steps, {
+            animation: 150,
+            handle: '.handle',
+            onEnd: function(evt) {
+                var items = steps.querySelectorAll('.step');
+                items.forEach(function(item, index) {
+                    item.querySelector('.step-number').innerHTML = '手順' + (index + 1);
+                });
             }
         });
+    };
 
-        document.getElementById('step-add').addEventListener('click', function() {
-            let stepCount = steps.querySelectorAll('.step').length;
-            let step = document.createElement('div');
-            step.classList.add('step');
-            step.innerHTML = `<p class="step-number">手順${stepCount + 1}</p>
-                            <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
-                            <input type="text" name="steps[]" placeholder="手順を入力" class="">
-                            <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">`;
+    document.getElementById('steps').addEventListener('click', function(evt) {
+        if (evt.target.classList.contains('step-delete')) {
+            evt.target.closest('.step').remove();
+        }
+    });
 
-            steps.appendChild(step);
-        })
-    </script>  
-</x-slot>
+    document.getElementById('step-add').addEventListener('click', function() {
+        let stepCount = steps.querySelectorAll('.step').length;
+        let step = document.createElement('div');
+        step.classList.add('step');
+        step.innerHTML = `<p class="step-number">手順${stepCount + 1}</p>
+                        <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                        <input type="text" name="steps[]" placeholder="手順を入力" class="">
+                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">`;
+
+        steps.appendChild(step);
+    })
+</script>
 </x-app-layout>
