@@ -1,27 +1,25 @@
-@extends('layouts.plain')
-
-@section('content')
-<section>
-<h3>【{{ $recipe['title'] }}】</h3>
-<p>{{ $recipe['tags'] }}</p>
-<h4>by {{ $recipe['user']['name'] }}</h4>
-<p>{{ $recipe['intro'] }}</p>
+<x-app-layout>
+<section class="container mx-3">
+<h3 class="text-2xl font-bold text-pretty tcl">【{{ $recipe['title'] }}】</h3>
+<p class="text-base text-slate-500">{{ $recipe['tags'] }}</p>
+<h4 class="text-base tcl text-right">by {{ $recipe['user']['name'] }}</h4>
+<p class="text-base tcl">{{ $recipe['intro'] }}</p>
 
 <div>
-    <img src="{{ asset('storage/'. $recipe['image']) }}" alt="{{ $recipe['title'] }}">
+    <img class="w-80" src="{{ asset('storage/'. $recipe['image']) }}" alt="{{ $recipe['title'] }}">
 </div>
 <div>
-    <p>{{ $recipe['comment'] }}</p>
-    <p>{{ $recipe['ing'] }}</p>
+    <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['comment'] }}</p>
+    <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['ing'] }}</p>
 </div>
 <div>
 @foreach($recipe['steps'] as $s)
     @if ($s['created_at'] == $recipe['steps'][(count($recipe['steps'])-1)]['created_at'])
         <div class="">
             <div class="">
-            <p>手順{{ $s['step_number'] }}</p>
+            <p class="m-4 rounded text-base tcl">手順{{ $s['step_number'] }}:</p>
             </div>
-            <p>{{ $s['description'] }}</p>
+            <p class="m-4 rounded text-base tcl bg-white">{{ $s['description'] }}</p>
         </div>
     @endif
 @endforeach
@@ -30,15 +28,15 @@
 <!-- LIKE機能 -->
 <div>
 @if($recipe->favorites->where('user_id', Auth::id())->count())
-    <form action="{{ route('favorites.recipeDestroy', $recipe) }}" method="POST">
+    <form class="m-5" action="{{ route('favorites.recipeDestroy', $recipe) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger">Unfavorite</button>
+        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Unfavorite</button>
     </form>
 @else
-    <form action="{{ route('favorites.recipeStore', $recipe) }}" method="POST">
+    <form class="m-5" action="{{ route('favorites.recipeStore', $recipe) }}" method="POST">
         @csrf
-        <button type="submit" class="btn btn-primary">Favorite</button>
+        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Favorite</button>
     </form>
 @endif
 </div>
@@ -46,15 +44,15 @@
 <!-- Bookmark機能 -->
 <div>
 @if($recipe->bookmarks->where('user_id', Auth::id())->count())
-    <form action="{{ route('bookmarks.recipeDestroy', $recipe) }}" method="POST">
+    <form class="m-5" action="{{ route('bookmarks.recipeDestroy', $recipe) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger">Unbookmark</button>
+        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Unbookmark</button>
     </form>
 @else
-    <form action="{{ route('bookmarks.recipeStore', $recipe) }}" method="POST">
+    <form class="m-5" action="{{ route('bookmarks.recipeStore', $recipe) }}" method="POST">
         @csrf
-        <button type="submit" class="btn btn-primary">Bookmark</button>
+        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Bookmark</button>
     </form>
 @endif
 </div>
@@ -81,4 +79,4 @@
     });
 </script>
 
-@endsection
+</x-app-layout>

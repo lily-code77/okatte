@@ -1,7 +1,5 @@
-@extends('layouts.default')
-
-@section('content')
-<section class="">
+<x-app-layout>
+<section class="container mx-3">
     <form action="{{ route('recipe.update',  ['recipe' => $recipe['id']]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -32,14 +30,14 @@
         </div>
         <!-- add button -->
         <div>
-            <button type="button" id="step-add" class="">手順を追加する</button>
+            <button type="button" id="step-add" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">手順を追加する</button>
         </div>
 
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント">{{ old('comment', $recipe['comment']) }}</textarea><br>
         <textarea type="text" name="memo" id="" placeholder="メモ（一般公開はされません）">{{ old('memo', $recipe['memo']) }}</textarea>
         <p class="">
-            <button class="" type="submit" name="status" value="draft">下書き保存</button>
-            <button class="" type="submit" name="status" value="publish">公開設定</button>
+            <button class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="draft">下書き保存</button>
+            <button class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="publish">公開設定</button>
         </p>
     </form>
 </section>
@@ -78,4 +76,4 @@
         steps.appendChild(step);
     })
 </script>
-@endsection
+</x-app-layout>

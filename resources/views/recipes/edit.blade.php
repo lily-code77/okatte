@@ -26,7 +26,7 @@
         </div>
         <!-- add button -->
         <div>
-            <button type="button" id="step-add" class="">手順を追加する</button>
+            <button type="button" id="step-add" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">手順を追加する</button>
         </div>
 
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント">{{ old('comment', $recipe['comment']) }}</textarea><br>
