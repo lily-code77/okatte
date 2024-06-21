@@ -1,5 +1,5 @@
 <x-app-layout>
-<section class="">
+<section class="container mx-3">
     <form action="{{ route('recipe.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="text" name="title" class="" placeholder="レシピのタイトル"><br>
