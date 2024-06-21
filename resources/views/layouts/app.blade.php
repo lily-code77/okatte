@@ -16,13 +16,35 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap" rel="stylesheet">
 
+        <!-- Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Include stylesheet -->
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+        <!-- Include the Quill library -->
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+        <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     </head>
-    <body class="BIZ UDPGothic antialiased">
+    <body class="fons-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            <!-- ここに共通ヘッダーのコンポーネントを読み込む -->
+            
+            @if (Route::has('login'))
+                @auth
+                    @include('layouts.announce-header')
+                    @include('layouts.global-header')
+                @else
+                    <div class="mt-3">
+                        @include('layouts.global-header')
+                    </div>
+                @endauth
+            @endif
 
             <!-- Page Heading -->
             @isset($header)

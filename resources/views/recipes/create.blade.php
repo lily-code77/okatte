@@ -1,6 +1,4 @@
-@extends('layouts.default')
-
-@section('content')
+<x-app-layout>
 <section class="">
     <form action="{{ route('recipe.store') }}" method="post" enctype="multipart/form-data">
         @csrf
@@ -24,50 +22,52 @@
         </div>
         <!-- add button -->
         <div>
-            <button type="button" id="step-add" class="">手順を追加する</button>
+            <button type="button" id="step-add" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">手順を追加する</button>
         </div>
         <textarea type="text" name="comment" id="" placeholder="レシピエピソードなどのコメント"></textarea><br>
         <textarea type="text" name="memo" id="" placeholder="メモ（一般公開はされません）"></textarea>
         <p class="">
-            <button class="" type="submit" name="status" value="draft">下書き保存</button>
-            <button class="" type="submit" name="status" value="publish">公開設定</button>
+            <button class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="draft">下書き保存</button>
+            <button class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="publish">公開設定</button>
         </p>
     </form>
 </section>
 
-<script>
-    window.onload = function() {
-        let steps = document.getElementById('steps');
+<x-slot name="scripts">
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        window.onload = function() {
+            let steps = document.getElementById('steps');
 
-        Sortable.create(steps, {
-            animation: 150,
-            handle: '.handle',
-            onEnd: function(evt) {
-                var items = steps.querySelectorAll('.step');
-                items.forEach(function(item, index) {
-                    item.querySelector('.step-number').innerHTML = '手順' + (index + 1);
-                });
+            Sortable.create(steps, {
+                animation: 150,
+                handle: '.handle',
+                onEnd: function(evt) {
+                    var items = steps.querySelectorAll('.step');
+                    items.forEach(function(item, index) {
+                        item.querySelector('.step-number').innerHTML = '手順' + (index + 1);
+                    });
+                }
+            });
+        };
+
+        document.getElementById('steps').addEventListener('click', function(evt) {
+            if (evt.target.classList.contains('step-delete')) {
+                evt.target.closest('.step').remove();
             }
         });
-    };
 
-    document.getElementById('steps').addEventListener('click', function(evt) {
-        if (evt.target.classList.contains('step-delete')) {
-            evt.target.closest('.step').remove();
-        }
-    });
+        document.getElementById('step-add').addEventListener('click', function() {
+            let stepCount = steps.querySelectorAll('.step').length;
+            let step = document.createElement('div');
+            step.classList.add('step');
+            step.innerHTML = `<p class="step-number">手順${stepCount + 1}</p>
+                            <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
+                            <input type="text" name="steps[]" placeholder="手順を入力" class="">
+                            <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">`;
 
-    document.getElementById('step-add').addEventListener('click', function() {
-        let stepCount = steps.querySelectorAll('.step').length;
-        let step = document.createElement('div');
-        step.classList.add('step');
-        step.innerHTML = `<p class="step-number">手順${stepCount + 1}</p>
-                        <img class="handle" src="{{ asset('images/index/swapVert.svg') }}" alt="">
-                        <input type="text" name="steps[]" placeholder="手順を入力" class="">
-                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">`;
-
-        steps.appendChild(step);
-    })
-</script>
-
-@endsection
+            steps.appendChild(step);
+        })
+    </script>  
+</x-slot>
+</x-app-layout>

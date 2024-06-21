@@ -56,5 +56,5 @@
     <div class="mx-5">
         {{ $myRecipes->links() }}
     </div>
-    </section>
+</section>
 </x-app-layout>

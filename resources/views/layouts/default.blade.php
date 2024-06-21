@@ -4,7 +4,8 @@
     <title>@yield('title', 'OKATTE！')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    
+    <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
 
     <!-- Include stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />

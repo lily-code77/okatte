@@ -60,7 +60,7 @@
             form.addEventListener('submit', function (event) {
                 if (!@json(Auth::check())) {
                     event.preventDefault();
-                    window.location.href = '{{ url(/login) }}';
+                    window.location.href = '{{ route('login') }}';
                 }
             });
         });

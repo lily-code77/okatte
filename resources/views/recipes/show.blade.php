@@ -4,7 +4,7 @@
 <section>
 <h3>【{{ $recipe['title'] }}】</h3>
 <p>{{ $recipe['tags'] }}</p>
-<h4>made by {{ $recipe['user']['name'] }}</h4>
+<h4>by {{ $recipe['user']['name'] }}</h4>
 <p>{{ $recipe['intro'] }}</p>
 
 <div>
@@ -74,7 +74,7 @@
             form.addEventListener('submit', function (event) {
                 if (!@json(Auth::check())) {
                     event.preventDefault();
-                    window.location.href = '{{ url(/login) }}';
+                    window.location.href = '{{ route('login') }}';
                 }
             });
         });

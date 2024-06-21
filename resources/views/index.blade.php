@@ -1,11 +1,9 @@
-@extends('layouts.default')
-@section('title', 'トップページ')
+<x-app-layout>
 
-@section('content')
 <section class="">
-    <div class="">
-    <h1 class="">開催中の記事投稿キャンペーン</h1>
-    <a class="campaign" href="/campaign">バナー</a>
+    <div class="container m-8">
+        <h1 class="tcl text-2xl font-bold">開催中の記事投稿キャンペーン</h1>
+        <a class="campaign" href="/campaign">バナー</a>
     </div>
 </section>
 
@@ -13,57 +11,51 @@
 
 @foreach($articles as $article)
     @if ($article['status'] == 'publish')     
-        <a href="{{ route('article.show', ['article' => $article->id]) }}">
-            <tr>
-                <div class="q_wrapper">
-                    <p>記事</p>
-                    <td>
-                        <div class="q_list">
-                            <img class=q_img src="{{ asset('storage/' . $article->image) }}" alt="">
+        <div class="container m-8 bg-white rounded-lg shadow">
+                <a class="m-1" href="{{ route('article.show', ['article' => $article->id]) }}">
+                    <div class="flex">
+                        <p class="mx-5 tcl">記事</p>
+                        <img class="w-48" src="{{ asset('storage/' . $article->image) }}" alt="">
+                        <div class="ml-5 leading-relaxed">
+                            <p class="text-base tcl">@ {{ $article['user']['name'] }}</p>
+                            <p class="text-xs text-slate-400">{{ $article->updated_at }}</p>
+                            <p class="text-2xl font-bold text-pretty tcl">{{ $article->title }}</p>
+                            <p class="text-base text-slate-500">{{ $article->tags }}</p>
                         </div>
-                    </td>
-                    <td>
-                        <div class="q_list_content">
-                            <p class="q_list_title">{{ $article->title }}</p>
-                            <p class="q_list_tags">{{ $article->tags }}</p>
-                            <p class="q_list_updated">{{ $article->updated_at }}</p>
-                        </div>
-                    </td>
-                </div>
-            </tr>
-        </a>
+                    </div>
+                </a>
+            </div>
     @endif
 @endforeach
 <!-- ページャー -->
-{{ $articles->links() }}
+<div class="mx-5">
+    {{ $articles->links() }}
+</div>
 
 @foreach($recipes as $recipe)
     @if ($recipe['status'] == 'publish') 
-        <a href="{{ route('recipe.show', ['recipe' => $recipe->id]) }}">
-            <tr>
-                <div class="q_wrapper">
-                    <p>レシピ</p>
-                    <td>
-                        <div class="q_list">
-                            <img class=q_img src="{{ asset('storage/' . $recipe->image) }}" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="q_list_content">
-                            <p class="q_list_title">{{ $recipe->title }}</p>
-                            <p class="q_list_tags">{{ $recipe->tags }}</p>
-                            <p class="q_list_intro">{{ $recipe->intro }}</p>
-                            <p class="q_list_updated">{{ $recipe->updated_at }}</p>
-                        </div>
-                    </td>
+    <div class="container m-8 bg-white rounded-lg shadow">
+        <a class="m-1" href="{{ route('recipe.show', ['recipe' => $recipe->id]) }}">
+            <div class="flex">
+                <p class="mx-5 tcl">レシピ</p>
+                <img class="w-48" src="{{ asset('storage/' . $recipe->image) }}" alt="">
+                <div class="ml-5 leading-relaxed">
+                    <p class="text-base tcl">@ {{ $recipe['user']['name'] }}</p>
+                    <p class="text-xs text-slate-400">{{ $recipe->updated_at }}</p>
+                    <p class="text-2xl font-bold text-pretty tcl">{{ $recipe->title }}</p>
+                    <p class="text-base text-slate-500">{{ $recipe->tags }}</p>
+                    <p class="text-base line-clamp-3 tcl">{{ $recipe->intro }}</p>
                 </div>
-            </tr>
+            </div>
         </a>
+    </div>
     @endif
 @endforeach
 <!-- ページャー -->
-{{ $recipes->links() }}
+<div class="mx-5">
+    {{ $recipes->links() }}
+</div>
+
 </section>
 
-
-@endsection
+</x-app-layout>

@@ -1,0 +1,21 @@
+.tcl {
+    color: #1b1d40;
+}
+
+.grey-border {
+    border: #979eb1;
+}
+
+.background-color {
+    background-color: #979eb1;
+}
+
+.button {
+    background-color: #1b1d40;
+    color: white;
+}
+
+.button:hover {
+    background-color: #20279a;
+    color: white;
+}
