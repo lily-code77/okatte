@@ -1,8 +1,8 @@
 <x-app-layout>
 
 <section class="">
-    <div class="">
-    <h1 class="">開催中の記事投稿キャンペーン</h1>
+    <div class="container m-8">
+    <h1 class="tcl text-2xl font-bold">開催中の記事投稿キャンペーン</h1>
     <a class="campaign" href="/campaign">バナー</a>
     </div>
 </section>
