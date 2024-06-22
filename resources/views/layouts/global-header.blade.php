@@ -1,7 +1,7 @@
 <section class="bg-white tcl">
     <div class="container mx-auto flex justify-between items-center">
         <a href="{{ route('dashboard') }}">
-            <img src="/images/index/logo.png" alt="logo" class="w-25 h-7 m-2 pl-7">
+            <img src="{{ asset('/images/index/logo.png') }}" alt="logo" class="w-25 h-7 m-2 pl-7">
         </a>
         <form class="mb-3" action="{{ route('search.find') }}" method="GET">
             @csrf
