@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('index', ['articles' => $articles, 'recipes' => $recipes]);
 })->name('index');
 
-Route::get('/postSelection',function() {
-    return view('postSelection');
-})->name('postSelection');
+// Route::get('/postSelection',function() {
+//     return view('postSelection');
+// })->name('postSelection');
 
 //認証
 Route::get('/dashboard', function () {

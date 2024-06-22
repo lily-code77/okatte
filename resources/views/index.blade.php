@@ -7,8 +7,7 @@
     </div>
 </section>
 
-<section class="">
-
+<section class="container m-8">
 @foreach($articles as $article)
     @if ($article['status'] == 'publish')     
         <div class="container m-8 bg-white rounded-lg shadow">
