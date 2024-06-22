@@ -50,7 +50,6 @@
             <div class="container px-5 py-10 mx-auto">
                 <div class="flex justify-around flex-wrap -m-4">
                     @foreach($myRecipes as $myRecipe)
-                        
                         <div class="p-4 m-4 md:w-1/3 rounded border bg-white flex-1">
                             <a href="{{ route('recipe.show', ['recipe' => $myRecipe->id]) }}">
                                 <div class="">
