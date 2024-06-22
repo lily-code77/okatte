@@ -3,16 +3,16 @@
 <h3 class="text-2xl font-bold text-pretty tcl">【{{ $recipe['title'] }}】</h3>
 <p class="text-base text-slate-500">{{ $recipe['tags'] }}</p>
 <h4 class="text-base tcl text-right">by {{ $recipe['user']['name'] }}</h4>
-<p class="text-base tcl">{{ $recipe['intro'] }}</p>
 
 <div>
     <img class="w-80" src="{{ asset('storage/'. $recipe['image']) }}" alt="{{ $recipe['title'] }}">
 </div>
 <div>
+    <p class="tcl text-base my-3">レシピ背景などのエピソード：</p>
     <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['comment'] }}</p>
     <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['ing'] }}</p>
 </div>
-<div>
+<div class="bg-slate-300 rounded py-3">
 @foreach($recipe['steps'] as $s)
     @if ($s['created_at'] == $recipe['steps'][(count($recipe['steps'])-1)]['created_at'])
         <div class="">
