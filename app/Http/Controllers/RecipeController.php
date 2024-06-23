@@ -88,7 +88,7 @@ class RecipeController extends Controller
         }
         Step::insert($steps);
 
-        return redirect()->route('dashboard')->with('success', 'レシピが保存されました');
+        return redirect()->route('myPage')->with('success', 'レシピが保存されました');
     }
 
     /**
@@ -175,7 +175,7 @@ class RecipeController extends Controller
         }
         Step::insert($steps);
 
-        return redirect()->route('dashboard')->with('success', 'レシピが保存されました');
+        return redirect()->route('myPage')->with('success', 'レシピが保存されました');
     }
 
     /**
@@ -187,7 +187,7 @@ class RecipeController extends Controller
         $recipe->delete();
         Storage::disk('public')->delete($recipe->image);
 
-        return to_route('dashboard')->with('success', 'レシピを削除しました');
+        return to_route('myPage')->with('success', 'レシピを削除しました');
     }
 
     public function changeHistory(string $recipe_id, string $step_id)
@@ -240,6 +240,6 @@ class RecipeController extends Controller
             $newStep->save();
         });
 
-        return to_route('dashboard');
+        return to_route('myPage');
     }
 }

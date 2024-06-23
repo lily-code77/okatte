@@ -61,7 +61,7 @@ class ArticleController extends Controller
         $article->status = $request->input('status'); // 'draft' もしくは 'publish'
         $article->save();
 
-        return redirect()->route('dashboard')->with('success', '記事が保存されました');
+        return redirect()->route('myPage')->with('success', '記事が保存されました');
     }
 
     /**
@@ -131,7 +131,7 @@ class ArticleController extends Controller
         $article->status = $request->input('status'); // 'draft' もしくは 'publish'
         $article->save();
 
-        return redirect()->route('dashboard')->with('success', '記事が保存されました');
+        return redirect()->route('myPage')->with('success', '記事が保存されました');
     }
 
     /**
@@ -143,6 +143,6 @@ class ArticleController extends Controller
         $article->delete();
         Storage::disk('public')->delete($article->image);
 
-        return to_route('dashboard')->with('success', '記事を削除しました');
+        return to_route('myPage')->with('success', '記事を削除しました');
     }
 }
