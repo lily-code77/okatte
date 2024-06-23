@@ -88,7 +88,7 @@ class RecipeController extends Controller
         }
         Step::insert($steps);
 
-        return redirect()->route('dashboard')->with('success', '記事が保存されました');
+        return redirect()->route('dashboard')->with('success', 'レシピが保存されました');
     }
 
     /**
@@ -175,7 +175,7 @@ class RecipeController extends Controller
         }
         Step::insert($steps);
 
-        return redirect()->route('dashboard')->with('success', '記事が保存されました');
+        return redirect()->route('dashboard')->with('success', 'レシピが保存されました');
     }
 
     /**
@@ -218,9 +218,18 @@ class RecipeController extends Controller
         // 複製元を取得（リレーションデータ付き）
         $recipe = Recipe::with('steps')->findOrFail($id);
 
+        // 画像を複製
+        if ($recipe->image) {
+            $originalImagePath = $recipe->image;
+            $imageExtension = pathinfo($originalImagePath, PATHINFO_EXTENSION);
+            $newImagePath = 'recipes/' . uniqid('copy_') . '.' . $imageExtension;
+            Storage::disk('public')->copy($originalImagePath, $newImagePath);
+        }
+
         // 複製
         $newRecipe = $recipe->replicate();
         $newRecipe->title = 'コピー_'. $recipe->title;
+        $newRecipe->image = $newImagePath; // 新しい画像パスを設定
         $newRecipe->save();
 
         // 複製元データのリレーションデータを複製
