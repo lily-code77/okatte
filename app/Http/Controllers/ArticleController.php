@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
 {
@@ -98,17 +99,20 @@ class ArticleController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'title' => 'required | max:255',
-            'tags' => 'nullable | min:1',
+            'title' => 'required|max:255',
+            'tags' => 'nullable',
             'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
-            'content'   => 'required',
+            'content' => 'required',
         ]);
+        
 
         //バリデーション:エラー 
         if ($validator->fails()) {
-            return redirect('/')
+            Log::error('Validation Errors: ', $validator->errors()->toArray()); // これでエラーメッセージをログに出力
+            return redirect()->back()
                 ->withInput()
-                ->withErrors($validator);
+                ->withErrors($validator)
+                ->with('validationErrors', $validator->errors()->all());
         }
 
         $article = Article::findOrFail($id);
