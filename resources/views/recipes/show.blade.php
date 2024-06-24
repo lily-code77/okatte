@@ -95,9 +95,19 @@
     for(const element of jsonData) {
         let step = parseStep(element.description);
         console.log(step);
+
+        // 既存の <p class="ing"></p> を取得
+        let pElement = document.querySelector('.ing');
+
+        // 取得した <p> 要素に step を追加
+        if (pElement) {
+            for (const e of step) {
+                pElement.innerHTML += e.ing + ":" + e.quantity + '<br>';
+            }
+        } else {
+            console.error('No element with class "ing" found.');
+        }
     }
-
-
 
     //
     document.addEventListener('DOMContentLoaded', function () {
