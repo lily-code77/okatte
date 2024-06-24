@@ -20,7 +20,7 @@
         </div>
         <div class="m-3">
             <label for="ing_create" class="tcl block my-2 text-sm font-medium text-gray-900 dark:text-white">材料</label>
-            <textarea id="ing_create" name="ing" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=""></textarea>
+            <textarea id="ing_create" name="ing" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" readonly></textarea>
         </div>
         
         <div id="steps" class="bg-slate-300 rounded py-3">
@@ -33,7 +33,7 @@
                     <p class="tcl step-number ml-5 mr-3 my-6">手順{{$i}}</p>
                     <img class="handle mr-3" src="{{ asset('images/index/swapVert.svg') }}" alt="順序を入れ替える">
                     <div class="relative m-3">
-                        <textarea type="text" id="step_create" name="steps[]" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" rows="4" cols="50" placeholder=""></textarea>
+                        <textarea type="text" id="step_create" name="steps[]" class="step-input block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" rows="4" cols="50" placeholder=""></textarea>
                         <label for="step_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">手順を入力</label>
                     </div>
                     <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
@@ -98,5 +98,8 @@
                         </div>`;
         steps.appendChild(step);
     })
+
+
+
 </script>
 </x-app-layout>

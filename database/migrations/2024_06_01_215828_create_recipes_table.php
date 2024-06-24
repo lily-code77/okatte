@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tags')->nullable();
             $table->string('intro')->nullable();
             $table->string('image')->nullable();
-            $table->string('ing');
+            $table->string('ing')->nullable();
             $table->string('comment')->nullable();
             $table->string('memo')->nullable();
             $table->enum('status', ['draft', 'publish']);

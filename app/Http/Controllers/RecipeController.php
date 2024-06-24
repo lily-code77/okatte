@@ -42,7 +42,7 @@ class RecipeController extends Controller
             'tags' => 'nullable | min:1',
             'intro' => 'nullable | min:1',
             'image' => 'nullable|file|mimes:jpeg,png,pdf,docx',
-            'ing' => 'required | max:255',
+            'ing' => 'nullable | max:255',
             'comment' => 'nullable | max:255',
             'memo' => 'nullable | max:255',
             'version_name' => 'nullable | max:255',

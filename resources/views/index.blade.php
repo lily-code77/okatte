@@ -1,12 +1,5 @@
 <x-app-layout>
 
-<section class="">
-    <div class="container m-8">
-        <h1 class="tcl text-2xl font-bold">開催中の記事投稿キャンペーン</h1>
-        <a class="campaign" href="/campaign">バナー</a>
-    </div>
-</section>
-
 <section class="container m-8">
 @foreach($articles as $article)
     @if ($article['status'] == 'publish')     

@@ -1,5 +1,6 @@
 <x-app-layout>
 <section class="container mx-3">
+
 <h3 class="text-2xl font-bold text-pretty tcl">【{{ $recipe['title'] }}】</h3>
 <p class="text-base text-slate-500">{{ $recipe['tags'] }}</p>
 <h4 class="text-base tcl text-right">by {{ $recipe['user']['name'] }}</h4>
@@ -10,9 +11,11 @@
 <div>
     <p class="tcl text-base my-3">レシピ背景などのエピソード：</p>
     <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['comment'] }}</p>
-    <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['ing'] }}</p>
+    <p class="ing m-4 rounded text-base tcl bg-white"></p>
 </div>
 <div class="bg-slate-300 rounded py-3">
+
+<?php $json = json_encode($recipe['steps']); ?>
 @foreach($recipe['steps'] as $s)
     @if ($s['created_at'] == $recipe['steps'][(count($recipe['steps'])-1)]['created_at'])
         <div class="">
@@ -67,6 +70,36 @@
 </section>
 
 <script>
+    //材料の抽出
+    function parseStep(step) {
+        const ingredientPattern = /@(.+?)\{(.*?)\}/g;
+        let match;
+        const results = [];
+
+        while ((match = ingredientPattern.exec(step)) !== null) {
+            const ingredient = match[1];
+            const quantity = match[2];
+
+            results.push({
+            ing: ingredient,
+            quantity: quantity
+            });
+        }
+
+        return results;
+    }
+
+
+    let jsonData = JSON.parse('<?=$json?>');
+    // console.log(jsonData);
+    for(const element of jsonData) {
+        let step = parseStep(element.description);
+        console.log(step);
+    }
+
+
+
+    //
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('form').forEach(function (form) {
             form.addEventListener('submit', function (event) {
@@ -77,6 +110,8 @@
             });
         });
     });
+
+    
 </script>
 
 </x-app-layout>
