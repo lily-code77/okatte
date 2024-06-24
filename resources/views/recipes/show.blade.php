@@ -15,9 +15,16 @@
 </div>
 <div class="bg-slate-300 rounded py-3">
 
-<?php $json = json_encode($recipe['steps']); ?>
+<?php
+    $lastSteps = [];
+    $lastStepCreatedAt = $recipe['steps'][count($recipe['steps']) - 1]['created_at'];
+?>
+
 @foreach($recipe['steps'] as $s)
-    @if ($s['created_at'] == $recipe['steps'][(count($recipe['steps'])-1)]['created_at'])
+    @if ($s['created_at'] == $lastStepCreatedAt)
+        @php
+            $lastSteps[] = $s;
+        @endphp
         <div class="">
             <div class="">
             <p class="m-4 rounded text-base tcl">手順{{ $s['step_number'] }}:</p>
@@ -26,6 +33,8 @@
         </div>
     @endif
 @endforeach
+
+<?php $json = json_encode($lastSteps); ?>
 </div>
 
 <!-- LIKE機能 -->
