@@ -11,7 +11,7 @@
             <label for="tags_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">タグをスペース区切りで入力してください（最大5つまで）</label>
         </div>
         <div class="relative m-3">
-            <input type="text" id="intro_create" name="intro" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
+            <input type="text" id="intro_create" name="intro" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 outline-none" placeholder="" />
             <label for="intro_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">レシピの紹介文</label>
         </div>
         <div class="m-3">
@@ -19,8 +19,12 @@
             <input name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image_create" type="file" accept='image/*'>
         </div>
         <div class="m-3">
-            <label for="ing_create" class="tcl block my-2 text-sm font-medium text-gray-900 dark:text-white">材料</label>
-            <textarea id="ing_create" name="ing" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" readonly></textarea>
+            <label class="tcl block my-2 text-sm font-medium">材料</label>
+            <p class="block p-5 w-full rounded-lg bg-gradient-to-r from-sky-200 to-indigo-200 text-base font text-sky-700 leading-loose">
+                このレシピが保存された後に、手順に入力された材料と分量が自動抽出されます。<br>
+                手順欄に材料と分量を、<span class="font-bold">@材料{分量}</span>と記載してください。<br>
+                Ex）ボウルに@牛乳{2L}と@砂糖{少々}を加える。
+            </p>
         </div>
         
         <div id="steps" class="bg-slate-300 rounded py-3">
