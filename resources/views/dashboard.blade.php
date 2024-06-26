@@ -1,13 +1,6 @@
 <x-app-layout>
 
 <section class="">
-    <div class="container m-8">
-    <h1 class="tcl text-2xl font-bold">開催中の記事投稿キャンペーン</h1>
-    <a class="campaign" href="/campaign">バナー</a>
-    </div>
-</section>
-
-<section class="">
     <!-- 項目毎ではなく、ごちゃまぜの最新順にでるように書き換え必要 -->
     @foreach($myArticles as $myArticle)
         @if ($myArticle['status'] == 'publish')

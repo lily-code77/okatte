@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Mindmap;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class MindmapController extends Controller
 {
@@ -21,25 +23,42 @@ class MindmapController extends Controller
      */
     public function create(string $id)
     {
-        $recipe = Recipe::findOrFail($id);
-        
-        return view('recipes.mindmap', compact('recipe'));
+    
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Recipe $recipe)
     {
-        //
+        Log::info('Request Data: ', $request->all()); // デバッグ用ログ
+
+        $request->validate([
+            'mindmapData' => 'required|json',
+        ]);
+
+        $user = Auth::user();
+
+        // マインドマップデータを保存
+        $mindMap = MindMap::updateOrCreate(
+            ['recipe_id' => $recipe->id, 'user_id' => $user->id],
+            ['data' => json_decode($request->mindmapData, true)]
+        );
+
+        return redirect()->route('recipe.edit', ['recipe' => $recipe->id]);
     }
 
+    public function load()
+    {
+        
+    }
     /**
      * Display the specified resource.
      */
-    public function show(Mindmap $mindmap)
+    public function show(Recipe $recipe)
     {
-        //
+        $mindMap = MindMap::where('recipe_id', $recipe->id)->first();
+        return view('recipes.mindmap', compact('mindMap', 'recipe'));
     }
 
     /**

@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Mindmap extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['user_id', 'recipe_id', 'data'];
+
+    protected $casts = [
+        'data' => 'array', // JSONデータを配列として扱うためのキャスト
+    ];
+
+    // ユーザーとのリレーションシップ
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // レシピとのリレーションシップ
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }
