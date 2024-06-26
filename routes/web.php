@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MindmapController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\SearchController;
@@ -92,5 +93,6 @@ Route::get('bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.i
 Route::post('recipes/{recipe}/bookmark', [BookmarkController::class, 'recipeStore'])->name('bookmarks.recipeStore');
 Route::delete('recipes/{recipe}/unbookmark', [BookmarkController::class, 'recipeDestroy'])->name('bookmarks.recipeDestroy');
 
-
+// Mind map
+Route::get('/recipes/{recipe}/mindmap', [MindmapController::class, 'create'])->name('mindmap.create');
 

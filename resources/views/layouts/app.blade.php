@@ -27,6 +27,11 @@
         <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
         
+        <!-- jsMind -->
+        <link type="text/css" rel="stylesheet" href="https://unpkg.com/jsmind@0.8.5/style/jsmind.css" />
+        <script type="text/javascript" src="https://unpkg.com/jsmind@0.8.5/es6/jsmind.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/jsmind@0.8.5/es6/jsmind.draggable-node.js"></script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link href="{{ asset('css/common.css') }}" rel="stylesheet">
