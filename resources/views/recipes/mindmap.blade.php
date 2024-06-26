@@ -1,6 +1,21 @@
 <x-app-layout>
 <section>
     <div id="jsmind_container" style="background-color:white; width: 100%; height: 600px; border: 1px solid black;"></div>
+
+    <div class="operation container m-3">
+        <p class="tcl text-lg">操作方法</p>
+        <div class="my-2">
+            addchild : Insert / Ctrl + Enter<br>
+            addbrother : Enter<br>
+            editnode : F2<br>
+            delnode : Delete<br>
+            toggle : Space<br>
+            left : ←<br>
+            up : ↑<br>
+            right : →<br>
+            down : ↓<br>
+        </div>
+    </div>
 </section>
 
 
