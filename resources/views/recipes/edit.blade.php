@@ -28,7 +28,7 @@
                 <a href="{{ route('mindmap.show', ['recipe' => $recipe['id']]) }}">
                     <button type="button" class="my-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Mind Map</button>
                 </a>
-                <a href="{{ route('mindmap.selectBox', ['recipe' => $recipe['id']]) }}"><button class="m-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="button">Get Notes<br>From Mind Map</button></a>
+                <a href="{{ route('mindmap.checkBox', ['recipe' => $recipe['id']]) }}"><button class="m-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="button">Get Notes<br>From Mind Map</button></a>
             </div>
         </div>
         <div class="m-3">

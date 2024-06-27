@@ -60,14 +60,14 @@ class MindmapController extends Controller
         return view('recipes.mindmap', compact('recipe'));
     }
 
-    // selectbox付きのshowをする。
-    public function selectBox(string $id)
+    // checkbox付きのshowをする。
+    public function checkBox(string $id)
     {
         $recipe = Recipe::with(['mindmaps', 'user'])
             ->where('id', $id)
             ->first();
 
-        return view('recipes.plusSelectBox', compact('recipe'));
+        return view('recipes.plusCheckBox', compact('recipe'));
     }
 
     /**

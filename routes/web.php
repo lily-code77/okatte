@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('index', ['articles' => $articles, 'recipes' => $recipes]);
 })->name('index');
 
-// Route::get('/postSelection',function() {
-//     return view('postSelection');
-// })->name('postSelection');
-
 //認証
 Route::get('/dashboard', function () {
     $myArticles = Article::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
@@ -96,5 +92,5 @@ Route::delete('recipes/{recipe}/unbookmark', [BookmarkController::class, 'recipe
 // Mind map
 Route::get('/recipes/{recipe}/mindmap', [MindmapController::class, 'show'])->name('mindmap.show');
 Route::post('/recipes/{recipe}/save-mindmap', [MindmapController::class, 'store'])->name('mindmap.store');
-Route::get('/recipes/{recipe}/mindmap-plusSelectBox', [MindmapController::class, 'selectBox'])->name('mindmap.selectBox');
+Route::get('/recipes/{recipe}/mindmap-plusCheckBox', [MindmapController::class, 'checkBox'])->name('mindmap.checkBox');
 
