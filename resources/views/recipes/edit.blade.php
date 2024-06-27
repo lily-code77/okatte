@@ -23,13 +23,7 @@
                     <input name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image_create" type="file" accept='image/*'>
                 </div>
             </div>
-            
-            <div>
-                <a href="{{ route('mindmap.show', ['recipe' => $recipe['id']]) }}">
-                    <button type="button" class="my-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Mind Map</button>
-                </a>
-                <a href="{{ route('mindmap.checkBox', ['recipe' => $recipe['id']]) }}"><button class="m-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="button">Get Notes<br>From Mind Map</button></a>
-            </div>
+            <a href="{{ route('mindmap.show', ['recipe' => $recipe['id']]) }}"><button type="button" class="my-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Mind Map</button></a>
         </div>
         <div class="m-3">
             <label class="tcl block my-2 text-sm font-medium">材料</label>
