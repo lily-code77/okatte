@@ -48,17 +48,16 @@ class MindmapController extends Controller
         return redirect()->route('recipe.edit', ['recipe' => $recipe->id]);
     }
 
-    public function load()
-    {
-        
-    }
     /**
      * Display the specified resource.
      */
-    public function show(Recipe $recipe)
+    public function show(string $id)
     {
-        $mindMap = MindMap::where('recipe_id', $recipe->id)->first();
-        return view('recipes.mindmap', compact('mindMap', 'recipe'));
+        $recipe = Recipe::with(['mindmaps', 'user'])
+            ->where('id', $id)
+            ->first();
+
+        return view('recipes.mindmap', compact('recipe'));
     }
 
     /**

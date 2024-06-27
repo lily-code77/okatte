@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class);
     }
 
+    public function mindmaps()
+    {
+        return $this->hasMany(Mindmap::class);
+    }
+
     /**
      * Get the articles that the user has bookmarked.
      *
