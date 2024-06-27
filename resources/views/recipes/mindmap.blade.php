@@ -80,13 +80,15 @@
         },
     };
 
-    // BladeテンプレートからJavaScript変数にデータを渡す
-    var mindMapData = "{{ isset($recipe->mindmaps) && $recipe->mindmaps->isNotEmpty() ? json_encode($recipe->mindmaps->first()->data) : '' }}";
+    var mindMapData = null;
+    @if(isset($recipe->mindmaps) && $recipe->mindmaps->isNotEmpty())
+        mindMapData = JSON.parse('<?=json_encode($recipe->mindmaps->first()->data)?>');
+    @endif
 
     var jm = new jsMind(options);
 
     if (mindMapData) {
-        jm.show(JSON.parse(mindMapData));
+        jm.show(mindMapData);
     } else {
         jm.show(mind);
     }
