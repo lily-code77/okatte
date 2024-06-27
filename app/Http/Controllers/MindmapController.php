@@ -60,6 +60,16 @@ class MindmapController extends Controller
         return view('recipes.mindmap', compact('recipe'));
     }
 
+    // selectbox付きのshowをする。
+    public function selectBox(string $id)
+    {
+        $recipe = Recipe::with(['mindmaps', 'user'])
+            ->where('id', $id)
+            ->first();
+
+        return view('recipes.plusSelectBox', compact('recipe'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

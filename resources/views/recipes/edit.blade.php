@@ -15,16 +15,20 @@
             <input type="text" id="intro_create" name="intro" value="{{ old('intro', $recipe['intro']) }}" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
             <label for="intro_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">レシピの紹介文</label>
         </div>
-        <img class="w-80" src="{{ asset('storage/'. $recipe['image']) }}" alt="">
         <div class="flex">
-            <div class="m-3">
-                <label class="tcl block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_create">画像</label>
-                <input name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image_create" type="file" accept='image/*'>
+            <div>
+                <img class="w-80" src="{{ asset('storage/'. $recipe['image']) }}" alt="">
+                <div class="m-3">
+                    <label class="tcl block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_create">画像</label>
+                    <input name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image_create" type="file" accept='image/*'>
+                </div>
             </div>
+            
             <div>
                 <a href="{{ route('mindmap.show', ['recipe' => $recipe['id']]) }}">
-                    <button type="button" class="my-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5">MIND MAP</button>
+                    <button type="button" class="my-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Mind Map</button>
                 </a>
+                <a href="{{ route('mindmap.selectBox', ['recipe' => $recipe['id']]) }}"><button class="m-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="button">Get Notes<br>From Mind Map</button></a>
             </div>
         </div>
         <div class="m-3">

@@ -96,5 +96,5 @@ Route::delete('recipes/{recipe}/unbookmark', [BookmarkController::class, 'recipe
 // Mind map
 Route::get('/recipes/{recipe}/mindmap', [MindmapController::class, 'show'])->name('mindmap.show');
 Route::post('/recipes/{recipe}/save-mindmap', [MindmapController::class, 'store'])->name('mindmap.store');
-
+Route::get('/recipes/{recipe}/mindmap-plusSelectBox', [MindmapController::class, 'selectBox'])->name('mindmap.selectBox');
 

@@ -1,13 +1,11 @@
 <x-app-layout>
 <section>
     <div id="jsmind_container" style="background-color:white; width: 100%; height: 600px; border: 1px solid black;"></div>
-
     <form id="mindmapForm" method="POST" action="{{ route('mindmap.store',  ['recipe' => $recipe->id]) }}">
         @csrf
         <input type="hidden" id="mindmapData" name="mindmapData">
         <button class="m-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="button" onclick="saveMindMap()">Save Mind Map</button>
     </form>
-    
     <div class="operation container m-3">
         <p class="tcl text-lg">操作方法</p>
         <div class="my-2">
