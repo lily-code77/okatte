@@ -24,3 +24,39 @@
     background-color: #20279a;
     color: white;
 }
+
+.mindmap-btn {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    background: #1e3a8a;
+    color: #fff;
+    padding: 18px 40px;
+    position: relative;
+}
+
+.mindmap-btn::after {
+    content: url(../images/index/lightbulb.svg);
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fad24d;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    transition: all 0.2s;
+}
+
+.mindmap-btn:hover::after {
+    transform: scale(1.2);
+}
+
+.mindmap-btn:hover {
+    background: #93c5fd;
+}
