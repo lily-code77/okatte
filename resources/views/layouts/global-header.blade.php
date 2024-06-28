@@ -11,7 +11,7 @@
         <div class="mb-3">
             <a href="{{ route('recipe.create') }}" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">レシピを作成</a>
             <a href="{{ route('article.create') }}" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">記事を作成</a>
-            <a href="{{ route('bookmarks.index') }}" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">ブックマーク</a>
+            <a href="{{ route('bookmarks.index') }}" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5" target="_blank">ブックマーク</a>
         </div>
         <div class="mb-3">
             @if (Route::has('login'))
