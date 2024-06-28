@@ -228,6 +228,7 @@ class RecipeController extends Controller
 
         // 複製
         $newRecipe = $recipe->replicate();
+        $newRecipe->user_id = Auth::user()->id;
         $newRecipe->title = 'コピー_'. $recipe->title;
         $newRecipe->image = $newImagePath; // 新しい画像パスを設定
         $newRecipe->save();

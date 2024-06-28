@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 //認証
 Route::get('/dashboard', function () {
-    $myArticles = Article::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
-    $myRecipes = Recipe::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
-    return view('dashboard', ['myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
+    $articles = Article::latest('updated_at')->paginate(3);
+    $recipes = Recipe::latest('updated_at')->paginate(3);
+    return view('dashboard', ['articles' => $articles, 'recipes' => $recipes]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
