@@ -1,13 +1,13 @@
 <x-app-layout>
 <section class="container mx-3">
-<h3 class="text-2xl font-bold text-pretty tcl">【{{ $article['title'] }}】</h3>
+<h3 class="my-3 text-2xl font-bold text-pretty tcl dark:text-slate-500">【{{ $article['title'] }}】</h3>
 <p class="text-base text-slate-500">{{ $article['tags'] }}</p>
 <h4 class="text-base tcl text-right">by {{ $article['user']['name'] }}</h4>
 
 <div>
     <img class="w-80" src="{{ asset('storage/'. $article['image']) }}" alt="{{ $article['title'] }}">
 </div>
-<div class="bg-white">
+<div class="bg-white dark:bg-slate-500">
     <p class="m-4 rounded text-base tcl bg-white">{!! $article['content'] !!}</p>
 </div>
 
@@ -17,12 +17,12 @@
     <form class="m-5" id="unfavorite-form" action="{{ route('favorites.destroy', $article) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Unfavorite</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Unfavorite</button>
     </form>
 @else
     <form class="m-5" id="favorite-form" action="{{ route('favorites.store', $article) }}" method="POST">
         @csrf
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Favorite</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Favorite</button>
     </form>
 @endif
 </div>
@@ -33,12 +33,12 @@
     <form class="m-5" action="{{ route('bookmarks.destroy', $article) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Unbookmark</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Unbookmark</button>
     </form>
 @else
     <form class="m-5" action="{{ route('bookmarks.store', $article) }}" method="POST">
         @csrf
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Bookmark</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Bookmark</button>
     </form>
 @endif
 </div>

@@ -4,14 +4,14 @@
         @csrf
         @method('PUT')
         <div class="relative m-3">
-            <input type="text" id="title_create" name="title" value="{{ old('title', $article->title) }}" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
+            <input type="text" id="title_create" name="title" value="{{ old('title', $article->title) }}" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 appearance-none dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
             <label for="title_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">レシピのタイトル</label>
             @error('title')
                 <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
             @enderror
         </div>
         <div class="relative m-3">
-            <input type="text" id="tags_create" name="tags" value="{{ old('tags', $article->tags) }}" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
+            <input type="text" id="tags_create" name="tags" value="{{ old('tags', $article->tags) }}" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 appearance-none dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
             <label for="tags_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">タグをスペース区切りで入力してください（最大5つまで）</label>
             @error('tags')
                 <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
@@ -26,15 +26,15 @@
             @enderror
         </div>
         
-        <div id="editor" style="height: 300px;" class="bg-white">{{ old('content', $article->content) }}</div>
+        <div id="editor" style="height: 300px;" class="bg-white dark:bg-gray-700 dark:text-white">{{ old('content', $article->content) }}</div>
         <input type="hidden" name="content" value="{{ old('content', $article->content) }}">
         @error('content')
             <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
         @enderror
 
         <p class="">
-            <button class="my-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="draft">下書き保存</button>
-            <button class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="publish">公開設定</button>
+            <button class="my-3 focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="draft">下書き保存</button>
+            <button class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5" type="submit" name="status" value="publish">公開設定</button>
         </p>
     </form>
 </section>
