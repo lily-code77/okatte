@@ -4,10 +4,10 @@
     <form id="mindmapForm" method="POST" action="{{ route('mindmap.store',  ['recipe' => $recipe->id]) }}">
         @csrf
         <input type="hidden" id="mindmapData" name="mindmapData">
-        <button class="m-3 focus:outline-none button font-medium rounded text-sm px-5 py-2.5" type="button" onclick="saveMindMap()">Save Mind Map</button>
+        <button class="m-3 focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5" type="button" onclick="saveMindMap()">Save Mind Map</button>
     </form>
-    <div class="operation container m-3">
-        <p class="tcl text-lg">操作方法</p>
+    <div class="w-2/4 operation container m-3 p-3 tcl dark:text-white dark:bg-gray-700 text-lg ">
+        <p class="font-bold">操作方法</p>
         <div class="my-2">
             addchild : Insert / Ctrl + Enter<br>
             addbrother : Enter<br>
