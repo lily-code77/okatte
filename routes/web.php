@@ -44,8 +44,8 @@ require __DIR__.'/auth.php';
 Route::get('/index/article/{article}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('/dashboard/article/{article}', [ArticleController::class, 'show'])->name('article.show');
 Route::get('/myPage/article/{article}', [ArticleController::class, 'show'])->name('article.show');
-Route::get('/articles/create', [ArticleController::class, 'create'])->name('article.create');
-Route::post('/articles/store', [ArticleController::class, 'store'])->name('article.store');
+Route::get('/articles/create', [ArticleController::class, 'create'])->middleware(['auth', 'verified'])->name('article.create');
+Route::post('/articles/store', [ArticleController::class, 'store'])->middleware(['auth', 'verified'])->name('article.store');
 Route::get('/articles/{article}', [ArticleController::class, 'edit'])->middleware(['auth', 'verified'])->name('article.edit');
 Route::put('/articles/{article}', [ArticleController::class, 'update'])->middleware(['auth', 'verified'])->name('article.update');
 Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->middleware(['auth', 'verified'])->name('article.destroy');
@@ -55,8 +55,8 @@ Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->mid
 Route::get('/index/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/dashboard/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/myPage/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipe.create');
-Route::post('/recipes/store', [RecipeController::class, 'store'])->name('recipe.store');
+Route::get('/recipes/create', [RecipeController::class, 'create'])->middleware(['auth', 'verified'])->name('recipe.create');
+Route::post('/recipes/store', [RecipeController::class, 'store'])->middleware(['auth', 'verified'])->name('recipe.store');
 Route::get('/recipes/{recipe}', [RecipeController::class, 'edit'])->middleware(['auth', 'verified'])->name('recipe.edit');
 // レシピの更新は、「手順だけ」上書き保存ではなく、名前をつけて保存
 Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware(['auth', 'verified'])->name('recipe.update');
@@ -76,18 +76,18 @@ Route::post('/recipes/{recipe}', [RecipeController::class, 'clone'])->middleware
 Route::get('/search/find', [SearchController::class, 'find'])->name('search.find');
 
 // LIKE機能
-Route::post('articles/{article}/favorite', [FavoriteController::class, 'store'])->name('favorites.store');
-Route::delete('articles/{article}/favorite', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-Route::post('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeStore'])->name('favorites.recipeStore');
-Route::delete('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeDestroy'])->name('favorites.recipeDestroy');
+Route::post('articles/{article}/favorite', [FavoriteController::class, 'store'])->middleware(['auth', 'verified'])->name('favorites.store');
+Route::delete('articles/{article}/favorite', [FavoriteController::class, 'destroy'])->middleware(['auth', 'verified'])->name('favorites.destroy');
+Route::post('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeStore'])->middleware(['auth', 'verified'])->name('favorites.recipeStore');
+Route::delete('recipes/{recipe}/favorite', [FavoriteController::class, 'recipeDestroy'])->middleware(['auth', 'verified'])->name('favorites.recipeDestroy');
 
 // Bookmark機能
-Route::post('articles/{article}/bookmark', [BookmarkController::class, 'store'])->name('bookmarks.store');
-Route::delete('articles/{article}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
-Route::get('bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
+Route::post('articles/{article}/bookmark', [BookmarkController::class, 'store'])->middleware(['auth', 'verified'])->name('bookmarks.store');
+Route::delete('articles/{article}/unbookmark', [BookmarkController::class, 'destroy'])->middleware(['auth', 'verified'])->name('bookmarks.destroy');
+Route::get('bookmarks', [BookmarkController::class, 'index'])->middleware(['auth', 'verified'])->name('bookmarks.index');
 
-Route::post('recipes/{recipe}/bookmark', [BookmarkController::class, 'recipeStore'])->name('bookmarks.recipeStore');
-Route::delete('recipes/{recipe}/unbookmark', [BookmarkController::class, 'recipeDestroy'])->name('bookmarks.recipeDestroy');
+Route::post('recipes/{recipe}/bookmark', [BookmarkController::class, 'recipeStore'])->middleware(['auth', 'verified'])->name('bookmarks.recipeStore');
+Route::delete('recipes/{recipe}/unbookmark', [BookmarkController::class, 'recipeDestroy'])->middleware(['auth', 'verified'])->name('bookmarks.recipeDestroy');
 
 // Mind map
 Route::get('/recipes/{recipe}/mindmap', [MindmapController::class, 'show'])->name('mindmap.show');
