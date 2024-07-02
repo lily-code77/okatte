@@ -1,19 +1,21 @@
 <x-app-layout>
 <section class="container mx-3">
 
-<h3 class="text-2xl font-bold text-pretty tcl">【{{ $recipe['title'] }}】</h3>
-<p class="text-base text-slate-500">{{ $recipe['tags'] }}</p>
-<h4 class="text-base tcl text-right">by {{ $recipe['user']['name'] }}</h4>
+<div class="flex">
+    <h3 class="flex-none w-64 text-2xl font-bold text-pretty tcl dark:text-slate-500">【{{ $recipe['title'] }}】</h3>
+    <p class="flex-1 w-64 text-base dark:text-slate-500">{{ $recipe['tags'] }}</p>
+    <h4 class="flex-1 w-32 text-base tcl dark:text-slate-500 text-right">by {{ $recipe['user']['name'] }}</h4>
+</div>
 
-<div>
+<div class="flex m-5">
     <img class="w-80" src="{{ asset('storage/'. $recipe['image']) }}" alt="{{ $recipe['title'] }}">
+    <p class="m-20 tcl text-base my-3 dark:text-slate-500">レシピ背景などのエピソード：<br>{{ $recipe['comment'] }}</p>
 </div>
 <div>
-    <p class="tcl text-base my-3">レシピ背景などのエピソード：</p>
-    <p class="m-4 rounded text-base tcl bg-white">{{ $recipe['comment'] }}</p>
-    <p class="ing m-4 rounded text-base tcl bg-white"></p>
+    <p class="tcl text-base my-3 dark:text-slate-500">材料：</p>
+    <p class="ing m-4 rounded text-base tcl bg-white dark:bg-slate-400"></p>
 </div>
-<div class="bg-slate-300 rounded py-3">
+<div class="bg-slate-300 dark:bg-slate-400 rounded py-3">
 
 <?php
     $lastSteps = [];
@@ -27,9 +29,9 @@
         @endphp
         <div class="">
             <div class="">
-            <p class="m-4 rounded text-base tcl">手順{{ $s['step_number'] }}:</p>
+            <p class="m-4 rounded text-base tcl dark:text-gray-700">手順{{ $s['step_number'] }}:</p>
             </div>
-            <p class="m-4 rounded text-base tcl bg-white">{{ $s['description'] }}</p>
+            <p class="m-4 rounded text-base tcl bg-white dark:text-white dark:bg-gray-700 dark:border-gray-600">{{ $s['description'] }}</p>
         </div>
     @endif
 @endforeach
@@ -43,12 +45,12 @@
     <form class="m-5" action="{{ route('favorites.recipeDestroy', $recipe) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Unfavorite</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Unfavorite</button>
     </form>
 @else
     <form class="m-5" action="{{ route('favorites.recipeStore', $recipe) }}" method="POST">
         @csrf
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Favorite</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Favorite</button>
     </form>
 @endif
 </div>
@@ -59,12 +61,12 @@
     <form class="m-5" action="{{ route('bookmarks.recipeDestroy', $recipe) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Unbookmark</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Unbookmark</button>
     </form>
 @else
     <form class="m-5" action="{{ route('bookmarks.recipeStore', $recipe) }}" method="POST">
         @csrf
-        <button type="submit" class="focus:outline-none button font-medium rounded text-sm px-5 py-2.5">Bookmark</button>
+        <button type="submit" class="focus:outline-none button dark:bg-gray-500 dark:text-white font-medium rounded text-sm px-5 py-2.5">Bookmark</button>
     </form>
 @endif
 </div>
