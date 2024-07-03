@@ -37,7 +37,7 @@
                         <input type="text" id="vname_create" name="version_name" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 appearance-none dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
                         <label for="vname_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">この手順のタイトル　(Ex:First instruction)</label>
                     </div>
-                    <img id="image" class="pt-6" src="{{ asset('images/index/help.svg') }}" alt="ヘルプ">
+                    <img id="image" class="pt-6 custom-cursor" src="{{ asset('images/index/help.svg') }}" alt="ヘルプ">
                     <div id="popup" class="hidden absolute top-0 left-0 mt-8 p-4 bg-white border border-gray-300 rounded shadow-lg">
                         <p>アイコンの説明<br>
                             <div class="flex">
@@ -54,12 +54,12 @@
                 @for($i = 1; $i < 4; $i++)
                 <div class="step flex my-3">
                         <p class="tcl dark:text-tcl step-number ml-5 mr-3 my-6">手順{{$i}}</p>
-                        <img class="handle mr-3" src="{{ asset('images/index/swapVert.svg') }}" alt="順序を入れ替える矢印">
+                        <img class="handle mr-3 custom-cursor" src="{{ asset('images/index/swapVert.svg') }}" alt="順序を入れ替える矢印">
                         <div class="relative m-3">
                             <textarea type="text" id="step_create" name="steps[]" class="step-input block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 appearance-none dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" rows="4" cols="50" placeholder=""></textarea>
                             <label for="step_create" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">手順を入力<br>(Ex:ボウルに@牛乳{2L}と@砂糖{少々}を加える。)</label>
                         </div>
-                        <img class="step-delete" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
+                        <img class="step-delete custom-cursor" src="{{ asset('images/index/delete.svg') }}" alt="削除する">
                 </div>
                 @endfor
             </div>

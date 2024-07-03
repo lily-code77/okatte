@@ -25,6 +25,11 @@
     color: white;
 }
 
+.custom-cursor {
+    cursor: pointer; /* ポインタを手のひらアイコンに変更 */
+}
+
+
 .mindmap-btn {
     display: inline-block;
     font-size: 18px;
