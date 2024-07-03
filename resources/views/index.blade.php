@@ -1,6 +1,6 @@
 <x-app-layout>
 
-<section class="container m-8">
+<section class="">
 @foreach($articles as $article)
     @if ($article['status'] == 'publish')     
         <div class="container m-8 bg-white rounded-lg shadow">
