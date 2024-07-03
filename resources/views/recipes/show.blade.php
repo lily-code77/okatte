@@ -31,7 +31,7 @@
             <div class="">
             <p class="m-4 rounded text-base tcl dark:text-gray-700">手順{{ $s['step_number'] }}:</p>
             </div>
-            <p class="m-4 rounded text-base tcl bg-white dark:text-white dark:bg-gray-700 dark:border-gray-600">{{ $s['description'] }}</p>
+            <p class="m-4 rounded text-base tcl bg-white dark:text-white dark:bg-gray-700 dark:border-gray-600">{!! nl2br($s['description']) !!}</p>
         </div>
     @endif
 @endforeach
