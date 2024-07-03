@@ -2,10 +2,10 @@
 <section class="container mx-3">
 
 <div class="flex">
-    <h3 class="flex-none w-64 text-2xl font-bold text-pretty tcl dark:text-slate-500">【{{ $recipe['title'] }}】</h3>
-    <p class="flex-1 w-64 text-base dark:text-slate-500">{{ $recipe['tags'] }}</p>
-    <h4 class="flex-1 w-32 text-base tcl dark:text-slate-500 text-right">by {{ $recipe['user']['name'] }}</h4>
+    <h3 class="pt-2 text-2xl font-bold text-pretty tcl dark:text-slate-500">【{{ $recipe['title'] }}】</h3>
+    <h4 class="pt-4 pl-9 text-base tcl dark:text-slate-500 text-right">by {{ $recipe['user']['name'] }}</h4>
 </div>
+<p class="mt-5 tags text-base dark:text-white">{{ $recipe['tags'] }}</p>
 
 <div class="flex m-5">
     <img class="w-80" src="{{ asset('storage/'. $recipe['image']) }}" alt="{{ $recipe['title'] }}">

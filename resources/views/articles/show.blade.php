@@ -1,11 +1,13 @@
 <x-app-layout>
 <section class="container mx-3">
-<h3 class="my-3 text-2xl font-bold text-pretty tcl dark:text-slate-500">【{{ $article['title'] }}】</h3>
-<p class="text-base text-slate-500">{{ $article['tags'] }}</p>
-<h4 class="text-base tcl text-right">by {{ $article['user']['name'] }}</h4>
+<div class="flex">
+    <h3 class="pt-2 text-2xl font-bold text-pretty tcl dark:text-slate-500">【{{ $article['title'] }}】</h3>
+    <h4 class="pt-4 pl-9 text-base tcl text-right dark:text-slate-500">by {{ $article['user']['name'] }}</h4>
+</div>
+<p class="mt-5 tags text-base tcl dark:text-white">{{ $article['tags'] }}</p>
 
 <div>
-    <img class="w-80" src="{{ asset('storage/'. $article['image']) }}" alt="{{ $article['title'] }}">
+    <img class="mt-5 w-80" src="{{ asset('storage/'. $article['image']) }}" alt="{{ $article['title'] }}">
 </div>
 <div class="bg-white dark:bg-slate-500">
     <p class="m-4 rounded text-base tcl bg-white">{!! $article['content'] !!}</p>
