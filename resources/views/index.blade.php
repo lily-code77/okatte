@@ -12,7 +12,7 @@
                             <p class="text-base tcl">@ {{ $article['user']['name'] }}</p>
                             <p class="text-xs text-slate-400">{{ $article->updated_at }}</p>
                             <p class="text-2xl font-bold text-pretty tcl">{{ $article->title }}</p>
-                            <p class="text-base text-slate-500">{{ $article->tags }}</p>
+                            <p class="tags text-base text-white">{{ $article->tags }}</p>
                         </div>
                     </div>
                 </a>
@@ -35,8 +35,8 @@
                     <p class="text-base tcl">@ {{ $recipe['user']['name'] }}</p>
                     <p class="text-xs text-slate-400">{{ $recipe->updated_at }}</p>
                     <p class="text-2xl font-bold text-pretty tcl">{{ $recipe->title }}</p>
-                    <p class="text-base text-slate-500">{{ $recipe->tags }}</p>
                     <p class="text-base line-clamp-3 tcl">{{ $recipe->intro }}</p>
+                    <p class="tags text-sm text-white">{{ $recipe->tags }}</p>
                 </div>
             </div>
         </a>

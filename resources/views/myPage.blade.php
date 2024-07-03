@@ -14,7 +14,7 @@
                                         <p class="p-3 text-base bg-slate-600 text-white">下書き中</p>
                                     @endif
                                     <p class="text-2xl font-bold text-pretty tcl">{{ $myArticle->title }}</p>
-                                    <p class="text-base text-slate-500">{{ $myArticle->tags }}</p>
+                                    <p class="tags text-base text-white">{{ $myArticle->tags }}</p>
                                     <p class="text-xs text-slate-400">{{ $myArticle->updated_at }}</p>
                                 </div>
                                 <div class="flex mt-3">
@@ -60,7 +60,7 @@
                                         <p class="p-3 text-base bg-slate-600 text-white">下書き中</p>
                                     @endif
                                     <p class="text-2xl font-bold text-pretty tcl">{{ $myRecipe->title }}</p>
-                                    <p class="text-base text-slate-500">{{ $myRecipe->tags }}</p>
+                                    <p class="tags text-sm text-white">{{ $myRecipe->tags }}</p>
                                     <p class="text-base tcl">{{ $myRecipe->intro }}</p>
                                     <p class="text-xs text-slate-400">{{ $myRecipe->updated_at }}</p>
                                 </div>
