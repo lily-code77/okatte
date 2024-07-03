@@ -14,6 +14,8 @@
                                         <p class="p-3 text-base bg-slate-600 text-white">下書き中</p>
                                     @endif
                                     <p class="text-2xl font-bold text-pretty tcl">{{ $myArticle->title }}</p>
+                                    <p class="flex"><img src="{{ asset('images/index/bookmark.svg') }}" alt="Bookmarks"> : {{ $myArticle->bookmarks_count }}</p>
+                                    <p class="flex"><img src="{{ asset('images/index/favorite.svg') }}" alt="Favorites"> : {{ $myArticle->favorites_count }}</p>
                                     <p class="tags text-base text-white">{{ $myArticle->tags }}</p>
                                     <p class="text-xs text-slate-400">{{ $myArticle->updated_at }}</p>
                                 </div>
@@ -36,7 +38,6 @@
                         </div>
                     @endforeach
                 </div>
-                
             </div>
                 
             <!-- ページャー -->
@@ -60,6 +61,8 @@
                                         <p class="p-3 text-base bg-slate-600 text-white">下書き中</p>
                                     @endif
                                     <p class="text-2xl font-bold text-pretty tcl">{{ $myRecipe->title }}</p>
+                                    <p class="flex"><img src="{{ asset('images/index/bookmark.svg') }}" alt="Bookmarks"> : {{ $myRecipe->bookmarks_count }}</p>
+                                    <p class="flex"><img src="{{ asset('images/index/favorite.svg') }}" alt="Favorites"> : {{ $myRecipe->favorites_count }}</p>
                                     <p class="tags text-sm text-white">{{ $myRecipe->tags }}</p>
                                     <p class="text-base tcl">{{ $myRecipe->intro }}</p>
                                     <p class="text-xs text-slate-400">{{ $myRecipe->updated_at }}</p>

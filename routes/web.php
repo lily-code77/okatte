@@ -33,8 +33,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/myPage', function () {
-    $myArticles = Article::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
-    $myRecipes = Recipe::where('user_id',Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
+    $myArticles = Article::where('user_id',Auth::user()->id)->withCount(['bookmarks', 'favorites'])->orderBy('created_at', 'asc')->paginate(3);
+    $myRecipes = Recipe::where('user_id',Auth::user()->id)->withCount(['bookmarks', 'favorites'])->orderBy('created_at', 'asc')->paginate(3);
     return view('myPage', ['myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
 })->middleware(['auth', 'verified'])->name('myPage');
 
