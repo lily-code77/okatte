@@ -81,44 +81,48 @@
 </section>
 
 <script>
-    //材料の抽出
-    function parseStep(step) {
-        const ingredientPattern = /@(.+?)\{(.*?)\}/g;
-        let match;
-        const results = [];
+    // 材料の抽出関数
+function parseStep(step) {
+    const ingredientPattern = /@(.+?)\{(.*?)\}/g;
+    let match;
+    const results = [];
 
-        while ((match = ingredientPattern.exec(step)) !== null) {
-            const ingredient = match[1];
-            const quantity = match[2];
+    while ((match = ingredientPattern.exec(step)) !== null) {
+        const ingredient = match[1];
+        const quantity = match[2];
 
-            results.push({
+        results.push({
             ing: ingredient,
             quantity: quantity
-            });
-        }
-
-        return results;
+        });
     }
 
+    return results;
+}
 
-    let jsonData = JSON.parse('<?=$json?>');
-    // console.log(jsonData);
-    for(const element of jsonData) {
-        let step = parseStep(element.description);
-        console.log(step);
+let jsonData = `<?=$json?>`;
+jsonData = jsonData.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");// JSON文字列内の制御文字を除去する
+jsonData = jsonData.replace(/\r\n/g, "\n"); // 改行文字の置換
+console.log({jsonData});
+jsonData = JSON.parse(jsonData);
 
-        // 既存の <p class="ing"></p> を取得
-        let pElement = document.querySelector('.ing');
+for (const element of jsonData) {
+    let step = parseStep(element.description);
+    console.log(step);
 
-        // 取得した <p> 要素に step を追加
-        if (pElement) {
-            for (const e of step) {
-                pElement.innerHTML += e.ing + ":" + e.quantity + '<br>';
-            }
-        } else {
-            console.error('No element with class "ing" found.');
+    // 既存の <p class="ing"></p> を取得
+    let pElement = document.querySelector('.ing');
+
+    // 取得した <p> 要素に step を追加
+    if (pElement) {
+        for (const e of step) {
+            pElement.innerHTML += e.ing + ":" + e.quantity + '<br>';
         }
+    } else {
+        console.error('No element with class "ing" found.');
     }
+}
+
 
     //
     document.addEventListener('DOMContentLoaded', function () {
