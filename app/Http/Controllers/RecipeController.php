@@ -184,8 +184,12 @@ class RecipeController extends Controller
     public function destroy(string $id)
     {
         $recipe = Recipe::findOrFail($id);
+
+        if ($recipe->image) {
+            Storage::disk('public')->delete($recipe->image);
+        }
+
         $recipe->delete();
-        Storage::disk('public')->delete($recipe->image);
 
         return to_route('myPage')->with('success', 'レシピを削除しました');
     }

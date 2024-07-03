@@ -140,8 +140,12 @@ class ArticleController extends Controller
     public function destroy(string $id)
     {
         $article = Article::findOrFail($id);
+
+        if ($article->image) {
+            Storage::disk('public')->delete($article->image);
+        }
+    
         $article->delete();
-        Storage::disk('public')->delete($article->image);
 
         return to_route('myPage')->with('success', '記事を削除しました');
     }
