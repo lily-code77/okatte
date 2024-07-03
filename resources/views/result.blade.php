@@ -17,15 +17,18 @@
             </div>
         @endforeach
         @foreach($recipeResults as $recipeResult)
-            <div class="q_wrapper">
-                <div class="q_list">
-                    <img class=q_img src="{{ asset('storage/' . $recipeResult->image) }}" alt="">
-                </div>
-                <div class="q_list_content">
-                    <p class="q_list_title">{{ $recipeResult->title }}</p>
-                    <p class="q_list_tags">{{ $recipeResult->tags }}</p>
-                    <p class="q_list_updated">{{ $recipeResult->updated_at }}</p>
-                </div>
+            <div class="container m-8 bg-white rounded-lg shadow">
+                <a class="m-1" href="{{ route('recipe.show', ['recipe' => $recipeResult->id]) }}">
+                    <div class="flex">
+                        <img class="mx-3 w-48" src="{{ asset('storage/' . $recipeResult->image) }}" alt="">
+                        <div class="ml-5 leading-relaxed">
+                            <p class="text-base tcl">@ {{ $recipeResult['user']['name'] }}</p>
+                            <p class="text-2xl font-bold text-pretty tcl">{{ $recipeResult->title }}</p>
+                            <p class="text-base text-slate-500">{{ $recipeResult->tags }}</p>
+                            <p class="text-xs text-slate-400">{{ $recipeResult->updated_at }}</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         @endforeach
     </div>
