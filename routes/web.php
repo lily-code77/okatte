@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    $articles = Article::latest('updated_at')->paginate(3);
-    $recipes = Recipe::latest('updated_at')->paginate(3);
+    $articles = Article::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
+    $recipes = Recipe::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
     return view('index', ['articles' => $articles, 'recipes' => $recipes]);
 })->name('index');
 
 //認証
 Route::get('/dashboard', function () {
-    $articles = Article::latest('updated_at')->paginate(3);
-    $recipes = Recipe::latest('updated_at')->paginate(3);
+    $articles = Article::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
+    $recipes = Recipe::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
     return view('dashboard', ['articles' => $articles, 'recipes' => $recipes]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -33,8 +33,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/myPage', function () {
-    $myArticles = Article::where('user_id',Auth::user()->id)->withCount(['bookmarks', 'favorites'])->orderBy('created_at', 'asc')->paginate(3);
-    $myRecipes = Recipe::where('user_id',Auth::user()->id)->withCount(['bookmarks', 'favorites'])->orderBy('created_at', 'asc')->paginate(3);
+    $myArticles = Article::where('user_id',Auth::user()->id)->withCount(['bookmarks', 'favorites'])->orderBy('updated_at', 'desc')->paginate(3);
+    $myRecipes = Recipe::where('user_id',Auth::user()->id)->withCount(['bookmarks', 'favorites'])->orderBy('updated_at', 'desc')->paginate(3);
     return view('myPage', ['myArticles' => $myArticles, 'myRecipes' => $myRecipes]);
 })->middleware(['auth', 'verified'])->name('myPage');
 
