@@ -13,7 +13,14 @@
                             <p class="text-base tcl">@ {{ $article['user']['name'] }}</p>
                             <p class="text-xs text-slate-400">{{ $article->updated_at }}</p>
                             <p class="text-2xl font-bold text-pretty tcl">{{ $article->title }}</p>
-                            <p class="tags text-base text-white">{{ $article->tags }}</p>
+
+                            <!-- Tags display logic -->
+                            <p>
+                                @foreach(explode(' ', $article->tags) as $tag)
+                                    <span class="tags text-base text-white">{{ $tag }}</span>
+                                @endforeach
+                            </p>
+
                             <div class="flex">
                                 <p class="flex"><img src="{{ asset('images/index/bookmark.svg') }}" alt="Bookmarks"> : {{ $article->bookmarks_count }}</p>
                                 <p class="ml-5 flex"><img src="{{ asset('images/index/favorite.svg') }}" alt="Favorites"> : {{ $article->favorites_count }}</p>
@@ -42,7 +49,14 @@
                             <p class="text-xs text-slate-400">{{ $recipe->updated_at }}</p>
                             <p class="text-2xl font-bold text-pretty tcl">{{ $recipe->title }}</p>
                             <p class="text-base line-clamp-3 tcl">{{ $recipe->intro }}</p>
-                            <p class="tags text-sm text-white">{{ $recipe->tags }}</p>
+                            
+                            <!-- Tags display logic -->
+                            <p>
+                                @foreach(explode(' ', $recipe->tags) as $tag)
+                                    <span class="tags text-base text-white">{{ $tag }}</span>
+                                @endforeach
+                            </p>
+
                             <div class="flex">
                                 <p class="flex"><img src="{{ asset('images/index/bookmark.svg') }}" alt="Bookmarks"> : {{ $recipe->bookmarks_count }}</p>
                                 <p class="ml-5 flex"><img src="{{ asset('images/index/favorite.svg') }}" alt="Favorites"> : {{ $recipe->favorites_count }}</p>

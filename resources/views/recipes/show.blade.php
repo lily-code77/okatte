@@ -6,7 +6,12 @@
             <h4 class="text-base tcl dark:text-slate-500 text-right mt-4 md:mt-0 md:pl-9">by {{ $recipe['user']['name'] }}</h4>
         </div>
 
-        <p class="mt-5 tags text-base dark:text-white">{{ $recipe['tags'] }}</p>
+        <!-- Tags display logic -->
+        <p>
+            @foreach(explode(' ', $recipe->tags) as $tag)
+                <span class="tags text-base text-white">{{ $tag }}</span>
+            @endforeach
+        </p>
 
         <div class="flex flex-col md:flex-row items-start mt-5">
             <img class="w-full md:w-1/3 max-w-full h-auto" src="{{ asset('storage/'. $recipe['image']) }}" alt="{{ $recipe['title'] }}">

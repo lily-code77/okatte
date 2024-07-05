@@ -4,7 +4,14 @@
             <h3 class="pt-2 text-2xl font-bold text-pretty tcl dark:text-slate-500 md:w-3/4">{{ $article['title'] }}</h3>
             <h4 class="pt-4 md:pt-2 text-base tcl text-right dark:text-slate-500 md:w-1/4">by {{ $article['user']['name'] }}</h4>
         </div>
-        <p class="mt-5 tags text-base tcl dark:text-white">{{ $article['tags'] }}</p>
+        
+        <!-- Tags display logic -->
+        <p>
+            @foreach(explode(' ', $article->tags) as $tag)
+                <span class="tags text-base text-white">{{ $tag }}</span>
+            @endforeach
+        </p>
+
         <div class="flex justify-center">
             <img class="mt-5 max-w-80 h-auto" src="{{ asset('storage/'. $article['image']) }}" alt="{{ $article['title'] }}">
         </div>

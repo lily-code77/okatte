@@ -18,7 +18,14 @@
                                     <p class="flex items-center"><img src="{{ asset('images/index/bookmark.svg') }}" alt="Bookmarks" class="mr-1">: {{ $myArticle->bookmarks_count }}</p>
                                     <p class="ml-5 flex items-center"><img src="{{ asset('images/index/favorite.svg') }}" alt="Favorites" class="mr-1">: {{ $myArticle->favorites_count }}</p>
                                 </div>
-                                <p class="tags text-base text-white mt-2">{{ $myArticle->tags }}</p>
+                                
+                                <!-- Tags display logic -->
+                                <p>
+                                    @foreach(explode(' ', $myArticle->tags) as $tag)
+                                        <span class="tags text-base text-white">{{ $tag }}</span>
+                                    @endforeach
+                                </p>
+
                                 <p class="text-xs text-slate-400 mt-1">{{ $myArticle->updated_at }}</p>
                             </div>
                             <div class="flex mt-3">
@@ -62,7 +69,14 @@
                                     <p class="flex items-center"><img src="{{ asset('images/index/bookmark.svg') }}" alt="Bookmarks" class="mr-1">: {{ $myRecipe->bookmarks_count }}</p>
                                     <p class="ml-5 flex items-center"><img src="{{ asset('images/index/favorite.svg') }}" alt="Favorites" class="mr-1">: {{ $myRecipe->favorites_count }}</p>
                                 </div>
-                                <p class="tags text-sm text-white mt-2">{{ $myRecipe->tags }}</p>
+
+                                <!-- Tags display logic -->
+                                <p>
+                                    @foreach(explode(' ', $myRecipe->tags) as $tag)
+                                        <span class="tags text-base text-white">{{ $tag }}</span>
+                                    @endforeach
+                                </p>
+
                                 <p class="text-base tcl mt-1">{{ $myRecipe->intro }}</p>
                                 <p class="text-xs text-slate-400 mt-1">{{ $myRecipe->updated_at }}</p>
                             </div>
