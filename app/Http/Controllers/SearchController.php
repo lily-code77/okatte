@@ -24,4 +24,5 @@ class SearchController extends Controller
         
         return view('result', compact('articleResults','recipeResults'));
     }
+
 }

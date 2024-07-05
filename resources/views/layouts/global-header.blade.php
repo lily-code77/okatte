@@ -5,7 +5,7 @@
         </a>
         <form class="mb-3 w-full lg:w-auto flex justify-center lg:justify-start" action="{{ route('search.find') }}" method="GET">
             @csrf
-            <input type="text" name="keyword" class="border border-gray-300 rounded-lg px-3 py-2.5 ml-7 focus:outline-none focus:ring-4 focus:ring-blue-500/50" placeholder="全ての記事/レシピから検索">
+            <input type="text" id="search" name="keyword" class="border border-gray-300 rounded-lg px-3 py-2.5 ml-7 focus:outline-none focus:ring-4 focus:ring-blue-500/50" placeholder="全ての記事/レシピから検索">
             <button type="submit" class="focus:outline-none button focus:ring-blue-500/50 font-medium rounded text-sm px-5 py-2.5 ml-2">検索</button>
         </form>
         <div class="mb-3 flex flex-col lg:flex-row items-center w-full lg:w-auto justify-center lg:justify-start space-y-2 lg:space-y-0 lg:space-x-2">
@@ -26,4 +26,21 @@
             @endif
         </div>
     </div>
+
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            let query = this.value;
+            fetch(`/search?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    let results = document.getElementById('results');
+                    results.innerHTML = '';
+                    data.forEach(item => {
+                        let div = document.createElement('div');
+                        div.textContent = item.name; // 適切なプロパティを使用してください
+                        results.appendChild(div);
+                    });
+                });
+        });
+    </script>
 </section>
