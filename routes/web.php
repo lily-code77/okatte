@@ -21,10 +21,14 @@ Route::get('/', function () {
 
 //認証
 Route::get('/dashboard', function () {
-    $articles = Article::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
-    $recipes = Recipe::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
-    return view('dashboard', ['articles' => $articles, 'recipes' => $recipes]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+    if (Auth::check()) {
+        $articles = Article::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
+        $recipes = Recipe::latest('updated_at')->withCount(['bookmarks', 'favorites'])->paginate(3);
+        return view('dashboard', ['articles' => $articles, 'recipes' => $recipes]);
+    } else {
+        return redirect()->route('index');
+    }
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
