@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container m-8">
-        <p class="tcl text-4xl font-extrabold dark:text-slate-500">{{ __("記事一覧") }}</p>
+        <!-- <p class="tcl text-4xl font-extrabold dark:text-slate-500">{{ __("記事一覧") }}</p> -->
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col md:flex-row justify-around flex-wrap -m-4">
                 @foreach($myArticles as $myArticle)
