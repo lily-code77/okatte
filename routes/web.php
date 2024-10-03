@@ -75,6 +75,9 @@ Route::post('/recipes/reflect_history/{recipe}/{step}', [RecipeController::class
 // レシピを複製する
 Route::post('/recipes/{recipe}', [RecipeController::class, 'clone'])->middleware(['auth', 'verified'])->name('recipe.clone');
 
+// レシピにフィードバックする
+Route::post('/recipes/feedback/{recipe}', [RecipeController::class, 'feedback'])->middleware(['auth', 'verified'])->name('recipe.feedback');
+
 //検索
 //キーワードを受け取って検索結果を表示するルーティング
 Route::get('/search/find', [SearchController::class, 'find'])->name('search.find');

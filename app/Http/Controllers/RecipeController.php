@@ -247,4 +247,9 @@ class RecipeController extends Controller
 
         return to_route('myPage');
     }
+
+    public function feedback(string $id)
+    {
+        return view('recipes.feedback');
+    }
 }
