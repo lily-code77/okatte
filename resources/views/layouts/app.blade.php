@@ -39,8 +39,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     </head>
-    <body class="fons-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="fons-sans antialiased bg-amber-100 dark:bg-gray-900">
+        <div class="min-h-screen">
             <!-- ここに共通ヘッダーのコンポーネントを読み込む -->
             
             @if (Route::has('login'))

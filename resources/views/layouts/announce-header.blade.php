@@ -1,4 +1,4 @@
-<section class="flex flex-col lg:flex-row bg-white tcl shadow h-auto lg:h-10 py-2">
+<section class="flex flex-col lg:flex-row bg-amber-100 tcl shadow h-auto lg:h-10 py-2">
     <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
         <p class="text-center lg:text-left">Dive & Explore Your Taste</p>
         <div class="flex mt-2 lg:mt-0">

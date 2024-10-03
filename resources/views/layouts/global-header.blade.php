@@ -1,4 +1,4 @@
-<section class="bg-white tcl">
+<section class="bg-amber-100 tcl">
     <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
         <a href="{{ route('dashboard') }}">
             <img src="{{ asset('/images/index/logo.png') }}" alt="logo" class="w-25 h-7 m-2">
